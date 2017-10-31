@@ -1,5 +1,5 @@
 author = "Yoshiharu Yamashita"
-baseurl = "/"
+baseurl = "https://gcm-dato.netlify.com/"
 canonifyurls = false
 copyright = "&copy; 2016. All rights reserved."
 paginate = 10
