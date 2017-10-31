@@ -1,0 +1,675 @@
+{{ partial "header.html" . }}
+<div class="my_content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 header"></div>
+      <div class="col-md-9 header text-left">
+        <h1>{{ .Title }}</h1>
+      </div>
+    </div>
+    <!-- <div class="header">
+    </div> -->
+    <div class="row">
+      <div class="col-md-3 filter">
+        {{ partial "filter.html" . }}
+      </div>
+      <div class="col-md-9">
+        <div class="row" id="productdata">
+          {{ range .Data.Pages }}
+            {{ .Render "summary"}}
+          {{ end }}
+        </div>
+        <div>
+          <nav aria-label="Page navigation example">
+            <input type="hidden" id="current_page">
+            <ul class="pagination justify-content-center" id="My_Page">
+
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form class="">
+    <input type="hidden" id="display_brand" value="{{ .Title }}">
+  </form>
+</div>
+<script type="text/javascript">
+    var pageIndex = 0;
+    var client = algoliasearch("YZO8M6AZ6J", "847f24047332edf2bb6a0c1f0181b83e");
+    var index = client.initIndex('new_gcm_car');
+    var lang_code = $("#lang_code").val();
+    var searchBrand = $("#display_brand").val();
+    var MainSearch = [];
+    var BrandSearch = [];
+    BrandSearch.push("Make:"+searchBrand);
+    MainSearch.push(BrandSearch);
+
+    var searchBrand = $("#display_brand").val();
+    var MainSearch = [];
+    var BrandSearch = [], BrandArray = [];
+    BrandSearch.push("make:"+searchBrand);
+    MainSearch.push(BrandSearch);
+
+    index.search({
+      query: searchBrand,
+      facetFilters: MainSearch,
+      facets: ["make","engine","manual_file_type","platform","serie","sub_serie","year"],
+    }).then(res => {
+      console.log(res);
+      var YearText = "";
+      var SerieText = "";
+      var EngineText = "";
+      var PlatformText = "";
+      var Sub_serieText = "";
+      var Manual_file_typeText = "";
+      var manualYear = res.facets['year'];
+      var manualSerie = res.facets['serie'];
+      var manualEngine = res.facets['engine'];
+      var manualPlatform = res.facets['platform'];
+      var manualSub_serie = res.facets['sub_serie'];
+      var manualManual_file_type = res.facets['manual_file_type'];
+      //render filter code
+        $.each( manualSerie, function( key, value ) {
+          SerieText += "<input type='checkbox' class='mySearch series' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+        });
+        $("#my_series").html(SerieText);
+        $.each( manualSub_serie, function( key, value ) {
+          Sub_serieText += "<input type='checkbox' class='mySearch subseries' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+        });
+        $("#my_suseries").html(Sub_serieText);
+        $.each( manualPlatform, function( key, value ){
+          PlatformText += "<input type='checkbox' class='mySearch platform' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+        });
+        $("#my_platform").html(PlatformText);
+        $.each( manualEngine, function( key, value ){
+          EngineText += "<input type='checkbox' class='mySearch engine' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+        });
+        $("#my_engine").html(EngineText);
+        $.each( manualYear, function( key, value ){
+          YearText += "<input type='checkbox' class='mySearch year' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+        });
+        $("#my_year").html(YearText);
+        $.each( manualManual_file_type, function( key, value ){
+          Manual_file_typeText += "<input type='checkbox' class='mySearch filetype' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+        });
+        $("#my_manual").html(Manual_file_typeText);
+      //end filter render
+
+      //rende manual
+        var product = "";
+        $.each(res.hits, function( i, val ){
+          product += "<div class='col-md-4'>"+
+            "<div class='ibox'>"+
+              "<div class='ibox-content product-box'>"+
+                "<div class='product-imitation'>"+
+                  "<a href='#'><img style='width:200px;height:260px;' src='"+val['image_prod_page']+"' alt='' ></a>"+
+                "</div>"+
+                "<div class='product-desc'>"+
+                  "<small class='text-muted'></small>"+
+                  "<a href='url' class='product-name'>"+val['title']+"</a>"+
+                  "<ul class='gcm-header-list'>"+
+                    "<li>Make: "+val['make']+"</li>"+
+                    "<li>Series: "+val['serie']+"</li>"+
+                    "<li>Subsiries: "+val['sub_serie']+"</li>"+
+                    "<li>Engine: "+val['engine']+"</li>"+
+                    "<li>Platform: "+val['platform']+", Year: "+val['year']+"</li>"+
+                  "</ul>"+
+                  "<div class='row'>"+
+                      "<a href='#url' class='btn btn-primary btn-outline'>More Info</a>&nbsp;&nbsp;&nbsp;"+
+                      '<div class="owl-image" style="width:10px;height:5px;">'+val['sendowl']+'</div>'+
+                  "</div>"+
+                "</div>"+
+              "</div>"+
+            "</div>"+
+          "</div>";
+        });
+        $("#productdata").html(product);
+      //end render manual
+      $("#current_page").val(0);
+      var pageText = "<li class='page-item disabled'><a class='page-link' href='#' tabindex='-1'>Total Pages: ("+res.nbPages+")</a></li>"+
+      "<li class='page-item'><a class='page-link' href='#'>Current: 1</a></li>"+
+      "<li class='page-item'><a class='page-link my-next' href='#'>Next</a></li>";
+      $("#My_Page").html(pageText);
+    });
+
+  $(document).on('click','.mySearch',function(){
+    pageIndex = 0;
+    if(this.checked){
+      var MainSearch = []
+      var SeriesSearch = [], SeriesArray = [];
+      var SubseriesSearch = [], SubseriesArray = [];
+      var PlatformSearch = [], PlatformArray = [];
+      var EngineSearch = [], EngineArray = [];
+      var YearSerach = [], YearArray = [];
+      var ManualType = [], ManualArray = [];
+      $('.series').each(function(){
+        if (this.checked){
+          SeriesSearch.push("serie:"+$(this).val())
+          SeriesArray.push($(this).val())
+        }
+      });
+      $('.subseries').each(function(){
+        if (this.checked){
+          SubseriesSearch.push("sub_serie:"+$(this).val())
+          SubseriesArray.push($(this).val())
+        }
+      });
+      $('.platform').each(function(){
+        if (this.checked){
+          PlatformSearch.push("platform:"+$(this).val())
+          PlatformArray.push($(this).val())
+        }
+      });
+      $('.engine').each(function(){
+        if (this.checked){
+          EngineSearch.push("engine:"+$(this).val())
+          EngineArray.push($(this).val())
+        }
+      });
+      $('.year').each(function(){
+        if (this.checked){
+          YearSerach.push("year:"+$(this).val())
+          YearArray.push($(this).val())
+        }
+      });
+      $('.filetype').each(function(){
+        if (this.checked){
+          ManualType.push("manual_file_type:"+$(this).val())
+          ManualArray.push($(this).val())
+        }
+      });
+      MainSearch.push(SeriesSearch);
+      // console.log(SeriesSearch);
+      MainSearch.push(SubseriesSearch);
+      // console.log(SubseriesSearch);
+      MainSearch.push(PlatformSearch);
+      // console.log(PlatformSearch);
+      MainSearch.push(EngineSearch);
+      // console.log(EngineSearch);
+      MainSearch.push(YearSerach);
+      // console.log(YearSerach);
+      MainSearch.push(ManualType);
+      // console.log(ManualType);
+      console.log(MainSearch);
+      index.search({
+        query: searchBrand,
+        facetFilters: MainSearch,
+        facets: ["make","engine","manual_file_type","platform","serie","sub_serie","year"]
+      }).then(res => {
+        console.log(res);
+        var YearText = "";
+        var SerieText = "";
+        var EngineText = "";
+        var PlatformText = "";
+        var Sub_serieText = "";
+        var Manual_file_typeText = "";
+        var manualYear = res.facets['year'];
+        var manualSerie = res.facets['serie'];
+        var manualEngine = res.facets['engine'];
+        var manualPlatform = res.facets['platform'];
+        var manualSub_serie = res.facets['sub_serie'];
+        var manualManual_file_type = res.facets['manual_file_type'];
+
+        $.each( manualSerie, function( key, value ) {
+          if($.inArray(key,SeriesArray) != -1){
+            SerieText += "<input type='checkbox' checked class='mySearch series' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+          }else{
+            SerieText += "<input type='checkbox' class='mySearch series' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+          }
+        });
+        $("#my_series").html(SerieText);
+
+        $.each( manualSub_serie, function( key, value ) {
+          if($.inArray(key,SubseriesArray) != -1){
+            Sub_serieText += "<input type='checkbox' checked class='mySearch subseries' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+          }else{
+            Sub_serieText += "<input type='checkbox' class='mySearch subseries' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+          }
+        });
+        $("#my_suseries").html(Sub_serieText);
+
+        $.each( manualPlatform, function( key, value ) {
+          if($.inArray(key,PlatformArray) != -1){
+            PlatformText += "<input type='checkbox' checked class='mySearch platform' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+          }else{
+            PlatformText += "<input type='checkbox' class='mySearch platform' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+          }
+        });
+        $("#my_platform").html(PlatformText);
+
+        $.each( manualEngine, function( key, value ) {
+          if($.inArray(key,EngineArray) != -1){
+            EngineText += "<input type='checkbox' checked class='mySearch engine' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+          }else{
+            EngineText += "<input type='checkbox' class='mySearch engine' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+          }
+        });
+        $("#my_engine").html(EngineText);
+
+        $.each( manualYear, function( key, value ) {
+          if($.inArray(key,YearArray) != -1){
+            YearText += "<input type='checkbox' checked class='mySearch year' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+          }else{
+            YearText += "<input type='checkbox' class='mySearch year' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+          }
+        });
+        $("#my_year").html(YearText);
+
+        $.each( manualManual_file_type, function( key, value ) {
+          if($.inArray(key,ManualArray) != -1){
+            Manual_file_typeText += "<input type='checkbox' checked class='mySearch filetype' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+          }else{
+            Manual_file_typeText += "<input type='checkbox' class='mySearch filetype' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+          }
+        });
+        $("#my_manual").html(Manual_file_typeText);
+
+        if(lang_code == "en"){
+          var product = "";
+          $.each(res.hits, function( i, val ){
+            product += "<div class='col-md-4'>"+
+              "<div class='ibox'>"+
+                "<div class='ibox-content product-box'>"+
+                  "<div class='product-imitation'>"+
+                    "<a href='#'><img style='width:200px;height:260px;' src='"+val['image_prod_page']+"' alt='' ></a>"+
+                  "</div>"+
+                  "<div class='product-desc'>"+
+                    "<small class='text-muted'></small>"+
+                    "<a href='url' class='product-name'>"+val['title']+"</a>"+
+                    "<ul class='gcm-header-list'>"+
+                      "<li>Make: "+val['make']+"</li>"+
+                      "<li>Series: "+val['serie']+"</li>"+
+                      "<li>Subsiries: "+val['sub_serie']+"</li>"+
+                      "<li>Engine: "+val['engine']+"</li>"+
+                      "<li>Platform: "+val['platform']+", Year: "+val['year']+"</li>"+
+                    "</ul>"+
+                    "<div class='row'>"+
+                        "<a href='#url' class='btn btn-primary btn-outline'>More Info</a>&nbsp;&nbsp;&nbsp;"+
+                        '<div class="owl-image" style="width:10px;height:5px;">'+val['sendowl']+'</div>'+
+                    "</div>"+
+                  "</div>"+
+                "</div>"+
+              "</div>"+
+            "</div>";
+          });
+          $("#productdata").html(product);
+        }else{
+          var product = "";
+          $.each(res.hits, function( i, val ){
+            product += "<div class='col-md-4'>"+
+              "<div class='ibox'>"+
+                "<div class='ibox-content product-box'>"+
+                  "<div class='product-imitation'>"+
+                    "<a href='#'><img style='width:200px;height:260px;' src='"+val['image_prod_page']+"' alt='' ></a>"+
+                  "</div>"+
+                  "<div class='product-desc'>"+
+                    "<small class='text-muted'></small>"+
+                    "<a href='url' class='product-name'>"+val['title']+"</a>"+
+                    "<ul class='gcm-header-list'>"+
+                      "<li>Make: "+val['make']+"</li>"+
+                      "<li>Series: "+val['serie']+"</li>"+
+                      "<li>Subsiries: "+val['sub_serie']+"</li>"+
+                      "<li>Engine: "+val['engine']+"</li>"+
+                      "<li>Platform: "+val['platform']+", Year: "+val['year']+"</li>"+
+                    "</ul>"+
+                    "<div class='row'>"+
+                        "<a href='#url' class='btn btn-primary btn-outline'>More Info</a>&nbsp;&nbsp;&nbsp;"+
+                        '<div class="owl-image" style="width:10px;height:5px;">'+val['sendowl']+'</div>'+
+                    "</div>"+
+                  "</div>"+
+                "</div>"+
+              "</div>"+
+            "</div>";
+          });
+          $("#productdata").html(product);
+        }
+
+        $("#current_page").val(0);
+        var pageText = "<li class='page-item disabled'><a class='page-link' href='#' tabindex='-1'>Total Pages: ("+res.nbPages+")</a></li>"+
+        "<li class='page-item'><a class='page-link' href='#'>Current: 1</a></li>"+
+        "<li class='page-item'><a class='page-link my-next' href='#'>Next</a></li>";
+        $("#My_Page").html(pageText);
+
+      });
+    }else{
+      pageIndex = 0;
+      $(this).removeAttr( "checked" )
+      var MainSearch = [];
+      var SeriesSearch = [], SeriesArray = [];
+      var SubseriesSearch = [], SubseriesArray = [];
+      var PlatformSearch = [], PlatformArray = [];
+      var EngineSearch = [], EngineArray = [];
+      var YearSerach = [], YearArray = [];
+      var ManualType = [], ManualArray = [];
+      $('.series').each(function(){
+        if (this.checked){
+          SeriesSearch.push("serie:"+$(this).val());
+          SeriesArray.push($(this).val());
+        }
+      });
+      $('.subseries').each(function(){
+        if (this.checked){
+          SubseriesSearch.push("sub_serie:"+$(this).val());
+          SubseriesArray.push($(this).val());
+        }
+      });
+      $('.platform').each(function(){
+        if (this.checked){
+          PlatformSearch.push("platform:"+$(this).val());
+          PlatformArray.push($(this).val());
+        }
+      });
+      $('.engine').each(function(){
+        if (this.checked){
+          EngineSearch.push("engine:"+$(this).val());
+          EngineArray.push($(this).val());
+        }
+      });
+      $('.year').each(function(){
+        if (this.checked){
+          YearSerach.push("year:"+$(this).val());
+          YearArray.push($(this).val());
+        }
+      });
+      $('.filetype').each(function(){
+        if (this.checked){
+          ManualType.push("manual_file_type:"+$(this).val());
+          ManualArray.push($(this).val());
+        }
+      });
+      MainSearch.push(SeriesSearch);
+      // console.log(SeriesSearch);
+      MainSearch.push(SubseriesSearch);
+      // console.log(SubseriesSearch);
+      MainSearch.push(PlatformSearch);
+      // console.log(PlatformSearch);
+      MainSearch.push(EngineSearch);
+      // console.log(EngineSearch);
+      MainSearch.push(YearSerach);
+      // console.log(YearSerach);
+      MainSearch.push(ManualType);
+      // console.log(ManualType);
+      console.log(MainSearch);
+      index.search({
+        query: searchBrand,
+        facetFilters: MainSearch,
+        facets: ["make","engine","manual_file_type","platform","serie","sub_serie","year"]
+      }).then(res => {
+        console.log(res);
+        var YearText = "";
+        var SerieText = "";
+        var EngineText = "";
+        var PlatformText = "";
+        var Sub_serieText = "";
+        var Manual_file_typeText = "";
+        var manualYear = res.facets['year'];
+        var manualSerie = res.facets['serie'];
+        var manualEngine = res.facets['engine'];
+        var manualPlatform = res.facets['platform'];
+        var manualSub_serie = res.facets['sub_serie'];
+        var manualManual_file_type = res.facets['manual_file_type'];
+
+        $.each( manualSerie, function( key, value ) {
+          if($.inArray(key,SeriesArray) != -1){
+            SerieText += "<input type='checkbox' checked class='mySearch series' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+          }else{
+            SerieText += "<input type='checkbox' class='mySearch series' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+          }
+        });
+        $("#my_series").html(SerieText);
+
+        $.each( manualSub_serie, function( key, value ) {
+          if($.inArray(key,SubseriesArray) != -1){
+            Sub_serieText += "<input type='checkbox' checked class='mySearch subseries' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+          }else{
+            Sub_serieText += "<input type='checkbox' class='mySearch subseries' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+          }
+        });
+        $("#my_suseries").html(Sub_serieText);
+
+        $.each( manualPlatform, function( key, value ) {
+          if($.inArray(key,PlatformArray) != -1){
+            PlatformText += "<input type='checkbox' checked class='mySearch platform' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+          }else{
+            PlatformText += "<input type='checkbox' class='mySearch platform' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+          }
+        });
+        $("#my_platform").html(PlatformText);
+
+        $.each( manualEngine, function( key, value ) {
+          if($.inArray(key,EngineArray) != -1){
+            EngineText += "<input type='checkbox' checked class='mySearch engine' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+          }else{
+            EngineText += "<input type='checkbox' class='mySearch engine' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+          }
+        });
+        $("#my_engine").html(EngineText);
+
+        $.each( manualYear, function( key, value ) {
+          if($.inArray(key,YearArray) != -1){
+            YearText += "<input type='checkbox' checked class='mySearch year' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+          }else{
+            YearText += "<input type='checkbox' class='mySearch year' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+          }
+        });
+        $("#my_year").html(YearText);
+
+        $.each( manualManual_file_type, function( key, value ) {
+          if($.inArray(key,ManualArray) != -1){
+            Manual_file_typeText += "<input type='checkbox' checked class='mySearch filetype' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+          }else{
+            Manual_file_typeText += "<input type='checkbox' class='mySearch filetype' value='"+key+"'>&nbsp;<span class='gcm-header'>"+key+" ("+value+")</span><br>";
+          }
+        });
+        $("#my_manual").html(Manual_file_typeText);
+
+        if(lang_code == "en"){
+          var product = "";
+          $.each(res.hits, function( i, val ){
+            product += "<div class='col-md-4'>"+
+              "<div class='ibox'>"+
+                "<div class='ibox-content product-box'>"+
+                  "<div class='product-imitation'>"+
+                    "<a href='#'><img style='width:200px;height:260px;' src='"+val['image_prod_page']+"' alt='' ></a>"+
+                  "</div>"+
+                  "<div class='product-desc'>"+
+                    "<small class='text-muted'></small>"+
+                    "<a href='url' class='product-name'>"+val['title']+"</a>"+
+                    "<ul class='gcm-header-list'>"+
+                      "<li>Make: "+val['make']+"</li>"+
+                      "<li>Series: "+val['serie']+"</li>"+
+                      "<li>Subsiries: "+val['sub_serie']+"</li>"+
+                      "<li>Engine: "+val['engine']+"</li>"+
+                      "<li>Platform: "+val['platform']+", Year: "+val['year']+"</li>"+
+                    "</ul>"+
+                    "<div class='row'>"+
+                        "<a href='#url' class='btn btn-primary btn-outline'>More Info</a>&nbsp;&nbsp;&nbsp;"+
+                        '<div class="owl-image" style="width:10px;height:5px;">'+val['sendowl']+'</div>'+
+                    "</div>"+
+                  "</div>"+
+                "</div>"+
+              "</div>"+
+            "</div>";
+          });
+          $("#productdata").html(product);
+        }else{
+          var product = "";
+          $.each(res.hits, function( i, val ){
+            product += "<div class='col-md-4'>"+
+              "<div class='ibox'>"+
+                "<div class='ibox-content product-box'>"+
+                  "<div class='product-imitation'>"+
+                    "<a href='#'><img style='width:200px;height:260px;' src='"+val['image_prod_page']+"' alt='' ></a>"+
+                  "</div>"+
+                  "<div class='product-desc'>"+
+                    "<small class='text-muted'></small>"+
+                    "<a href='url' class='product-name'>"+val['title']+"</a>"+
+                    "<ul class='gcm-header-list'>"+
+                      "<li>Make: "+val['make']+"</li>"+
+                      "<li>Series: "+val['serie']+"</li>"+
+                      "<li>Subsiries: "+val['sub_serie']+"</li>"+
+                      "<li>Engine: "+val['engine']+"</li>"+
+                      "<li>Platform: "+val['platform']+", Year: "+val['year']+"</li>"+
+                    "</ul>"+
+                    "<div class='row'>"+
+                        "<a href='#url' class='btn btn-primary btn-outline'>More Info</a>&nbsp;&nbsp;&nbsp;"+
+                        '<div class="owl-image" style="width:10px;height:5px;">'+val['sendowl']+'</div>'+
+                    "</div>"+
+                  "</div>"+
+                "</div>"+
+              "</div>"+
+            "</div>";
+          });
+          $("#productdata").html(product);
+        }
+        $("#current_page").val(0);
+        var pageText = "<li class='page-item disabled'><a class='page-link' href='#' tabindex='-1'>Total Pages: ("+res.nbPages+")</a></li>"+
+        "<li class='page-item'><a class='page-link' href='#'>Current: 1</a></li>"+
+        "<li class='page-item'><a class='page-link my-next' href='#'>Next</a></li>";
+        $("#My_Page").html(pageText);
+      });
+    }
+  });
+
+    $(document).on('click','.my-next',function(){
+      var searchPage = pageIndex + 1;
+      // alert(searchPage);
+      var MainSearch = [];
+      var SeriesSearch = [], SeriesArray = [];
+      var SubseriesSearch = [], SubseriesArray = [];
+      var PlatformSearch = [], PlatformArray = [];
+      var EngineSearch = [], EngineArray = [];
+      var YearSerach = [], YearArray = [];
+      var ManualType = [], ManualArray = [];
+      $('.series').each(function(){
+        if (this.checked){
+          SeriesSearch.push("serie:"+$(this).val());
+          SeriesArray.push($(this).val());
+        }
+      });
+      $('.subseries').each(function(){
+        if (this.checked){
+          SubseriesSearch.push("sub_serie:"+$(this).val());
+          SubseriesArray.push($(this).val());
+        }
+      });
+      $('.platform').each(function(){
+        if (this.checked){
+          PlatformSearch.push("platform:"+$(this).val());
+          PlatformArray.push($(this).val());
+        }
+      });
+      $('.engine').each(function(){
+        if (this.checked){
+          EngineSearch.push("engine:"+$(this).val());
+          EngineArray.push($(this).val());
+        }
+      });
+      $('.year').each(function(){
+        if (this.checked){
+          YearSerach.push("year:"+$(this).val());
+          YearArray.push($(this).val());
+        }
+      });
+      $('.filetype').each(function(){
+        if (this.checked){
+          ManualType.push("manual_file_type:"+$(this).val());
+          ManualArray.push($(this).val());
+        }
+      });
+      MainSearch.push(SeriesSearch);
+      // console.log(SeriesSearch);
+      MainSearch.push(SubseriesSearch);
+      // console.log(SubseriesSearch);
+      MainSearch.push(PlatformSearch);
+      // console.log(PlatformSearch);
+      MainSearch.push(EngineSearch);
+      // console.log(EngineSearch);
+      MainSearch.push(YearSerach);
+      // console.log(YearSerach);
+      MainSearch.push(ManualType);
+      // console.log(ManualType);
+      console.log(MainSearch);
+      index.search({
+        query: searchBrand,
+        page: searchPage,
+        facetFilters: MainSearch,
+        facets: ["make","engine","manual_file_type","platform","serie","sub_serie","year"]
+      }).then(res => {
+        console.log(res);
+        if(res.hits.length == 0){
+          alert("Page Number out of Reach");
+          return false
+        }else{
+          if(lang_code == "en"){
+            var product = "";
+            $.each(res.hits, function( i, val ){
+              product += "<div class='col-md-4'>"+
+                "<div class='ibox'>"+
+                  "<div class='ibox-content product-box'>"+
+                    "<div class='product-imitation'>"+
+                      "<a href='#'><img style='width:200px;height:260px;' src='"+val['image_prod_page']+"' alt='' ></a>"+
+                    "</div>"+
+                    "<div class='product-desc'>"+
+                      "<small class='text-muted'></small>"+
+                      "<a href='url' class='product-name'>"+val['title']+"</a>"+
+                      "<ul class='gcm-header-list'>"+
+                        "<li>Make: "+val['make']+"</li>"+
+                        "<li>Series: "+val['serie']+"</li>"+
+                        "<li>Subsiries: "+val['sub_serie']+"</li>"+
+                        "<li>Engine: "+val['engine']+"</li>"+
+                        "<li>Platform: "+val['platform']+", Year: "+val['year']+"</li>"+
+                      "</ul>"+
+                      "<div class='row'>"+
+                          "<a href='#url' class='btn btn-primary btn-outline'>More Info</a>&nbsp;&nbsp;&nbsp;"+
+                          "<div class='owl-image' style='width:10px;height:5px;'>"+val['sendowl']+"</div>"+
+                      "</div>"+
+                    "</div>"+
+                  "</div>"+
+                "</div>"+
+              "</div>";
+            });
+            $("#productdata").html(product);
+          }else{
+            var product = "";
+            $.each(res.hits, function( i, val ){
+              product += "<div class='col-md-4'>"+
+                "<div class='ibox'>"+
+                  "<div class='ibox-content product-box'>"+
+                    "<div class='product-imitation'>"+
+                      "<a href='#'><img style='width:200px;height:260px;' src='"+val['image_prod_page']+"' alt='' ></a>"+
+                    "</div>"+
+                    "<div class='product-desc'>"+
+                      "<small class='text-muted'></small>"+
+                      "<a href='url' class='product-name'>"+val['title']+"</a>"+
+                      "<ul class='gcm-header-list'>"+
+                        "<li>Make: "+val['make']+"</li>"+
+                        "<li>Series: "+val['serie']+"</li>"+
+                        "<li>Subsiries: "+val['sub_serie']+"</li>"+
+                        "<li>Engine: "+val['engine']+"</li>"+
+                        "<li>Platform: "+val['platform']+", Year: "+val['year']+"</li>"+
+                      "</ul>"+
+                      "<div class='row'>"+
+                          "<a href='#url' class='btn btn-primary btn-outline'>More Info</a>&nbsp;&nbsp;&nbsp;"+
+                          '<div class="owl-image" style="width:10px;height:5px;">'+val['sendowl']+'</div>'+
+                      "</div>"+
+                    "</div>"+
+                  "</div>"+
+                "</div>"+
+              "</div>";
+            });
+            $("#productdata").html(product);
+          }
+          $("#current_page").val(0);
+          var pageText = "<li class='page-item disabled'><a class='page-link' href='#' tabindex='-1'>Total Pages: ("+res.nbPages+")</a></li>"+
+          "<li class='page-item'><a class='page-link' href='#'>Current: "+(searchPage+1)+"</a></li>"+
+          "<li class='page-item'><a class='page-link my-next' href='#'>Next</a></li>";
+          $("#My_Page").html(pageText);
+        }
+      });
+      pageIndex++;
+    });
+
+</script>
+{{ partial "footer.html" . }}

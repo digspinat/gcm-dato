@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-left">
+      <h2 class="gcm-header">{{ .Title }}</h2>
+    </div>
+  </div>
+  <div class="row padding-top image-box-product">
+    <div class="col-md-6">
+      <img src="{{ .Params.image_prod_page }}" class="img-fluid" alt="Cinque Terre">
+    </div>
+    <div class="col-md-6 padding-top-change">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="">
+            <span class="gcm-header">Price: </span>{{ .Params.price }}
+          </div>
+          <div class="padding-top">{{ .Params.sendowl | safeHTML }}</div>
+        </div>
+      </div>
+      {{ partial "partial_cart.html" . }}
+    </div>
+  </div>
+  <div class="row padding-top">
+    <div class="col-md-12">
+      <ul class="list-group">
+        <li class="list-group-item my-active"><span class="">File Information</li>
+        <li class="list-group-item">
+          <table class="">
+            <tr class="text-left">
+              <td><span class="gcm-header">No. of Pages:</span> {{ .Params.manual_pages }}</td>
+              <td><span class="gcm-header">File size download:</span> {{ .Params.manual_size }}</td>
+              <td><span class="gcm-header">File type:</span> {{ .Params.manual_type }}</td>
+              <td><span class="gcm-header">File:</span> {{ .Params.manual_file_type }}</td>
+            </tr>
+          </table>
+        </li>
+      </ul>
+    </div>
+  </div>
+  {{ partial "propsncons.html" . }}
+  {{ partial "gtm_code.html" . }}
+  {{ partial "tableofcontent.html" . }}
+  <div class="row padding-top">
+    <div class="col-md-12 text-center">
+        {{ .Params.sendowl | safeHTML }}
+    </div>
+  </div>
+  {{ partial "partial_download.html" . }}
+</div>

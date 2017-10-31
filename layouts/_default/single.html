@@ -1,0 +1,20 @@
+{{ partial "header.html" . }}
+
+<div class="my_content">
+  {{ if (isset .Params "pg_dadv_desc_md") }}
+    {{ partial "singleproduct.html" . }}
+  {{ end }}
+
+  {{ if eq .Type "pages" }}
+    {{ partial .Params.id . }}
+  {{ end }}
+</div>
+<!-- <div class="header">
+  <h1>{{ .Title }}</h1>
+  <h2>{{ .Description }}</h2>
+</div>
+<div class="content">
+  {{ .Content }}
+</div> -->
+
+{{ partial "footer.html" . }}

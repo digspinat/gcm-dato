@@ -1,0 +1,88 @@
+<!-- </div>
+</div> -->
+<footer>
+    <div class="row footer_title" style="background-color:#181c1e;">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+          {{ range .Site.Pages }}
+            {{ if eq .Type "footer" }}
+              {{ .Description }} <br>
+              {{ .Content | safeHTML }}
+            {{ end }}
+          {{ end }}
+      </div>
+      <div class="col-md-2 text-right" style="color:black;">
+          <select class="" name="{{ .Permalink }}" id="lang_url">
+            <option value="">Select Currency</option>
+            {{ if .IsTranslated }}
+            {{ range .Translations }}
+            {{ $curLang := index (where $.Site.Languages "Lang" .Lang) 0 }}
+              <option value="{{ .Permalink }}">{{ $curLang.LanguageName }}</option>
+            {{ end }}
+            {{ end }}
+          </select>
+      </div>
+    </div>
+  </div>
+<script src="{{ .Site.BaseURL }}js/ui.js"></script>
+
+{{ partial "google_analytics.html" . }}
+<script>
+      $(document).ready(function(){
+        var lang_code = $("#lang_code").val();
+        if(lang_code == "en"){
+
+        }else{
+
+        }
+        $("#lang_url").change(function(){
+          window.location = $(this).val();
+        });
+      });
+      (function (window, document) {
+      var menu1 = document.getElementById('menu1'),
+          WINDOW_CHANGE_EVENT = ('onorientationchange' in window) ? 'orientationchange':'resize';
+
+      function toggleHorizontal() {
+          [].forEach.call(
+              document.getElementById('menu1').querySelectorAll('.custom-can-transform'),
+              function(el){
+                  el.classList.toggle('pure-menu-horizontal');
+              }
+          );
+      };
+
+      function togglemenu() {
+          // set timeout so that the panel has a chance to roll up
+          // before the menu1 switches states
+          if (menu1.classList.contains('open')) {
+              setTimeout(toggleHorizontal, 500);
+          }else{
+              toggleHorizontal();
+          }
+          menu1.classList.toggle('open');
+          document.getElementById('toggle').classList.toggle('x');
+          var d = document.getElementById("div1");
+      };
+
+      function closemenu() {
+          if (menu1.classList.contains('open')){
+              togglemenu();
+          }
+      }
+
+      document.getElementById('toggle').addEventListener('click', function (e) {
+          togglemenu();
+          e.preventDefault();
+      });
+
+      window.addEventListener(WINDOW_CHANGE_EVENT, closemenu);
+      })(this, this.document);
+</script>
+{{ range .Site.Pages }}
+  {{ if eq .Title "GA" }}
+    {{ .Content | safeHTML }}
+  {{ end }}
+{{ end }}
+</body>
+</html>

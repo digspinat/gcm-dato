@@ -1,0 +1,81 @@
+author = "Yoshiharu Yamashita"
+baseurl = "/"
+canonifyurls = false
+copyright = "&copy; 2016. All rights reserved."
+paginate = 10
+title = "Blackburn Theme Demo"
+[indexes]
+product = "make"
+tag = "tags"
+topic = "topics"
+[languages.en]
+languageCode = "en-us"
+languageName = "USD"
+title = "USD"
+weight = 1
+[languages.az]
+languageCode = "az"
+languageName = "AZ"
+title = "AZ"
+weight = 2
+[languages.cy]
+languageCode = "cy"
+languageName = "CY"
+title = "CY"
+weight = 3
+[languages.ho]
+languageCode = "ho"
+languageName = "HO"
+title = "HO"
+weight = 4
+[languages.ia]
+languageCode = "ia"
+languageName = "INR"
+title = "INR"
+weight = 6
+[languages.eu]
+languageCode = "eu"
+languageName = "EUR"
+title = "EUR"
+weight = 7
+[languages.mn]
+languageCode = "mn"
+languageName = "MXN"
+title = "MXN"
+weight = 8
+[languages.nv]
+languageCode = "nv"
+languageName = "NZD"
+title = "NZD"
+weight = 9
+[languages.sw]
+languageCode = "sw"
+languageName = "SGD"
+title = "SGD"
+weight = 10
+[languages.za]
+languageCode = "za"
+languageName = "ZAR"
+title = "ZAR"
+weight = 11
+[languages.tw]
+languageCode = "tw"
+languageName = "TWD"
+title = "TWD"
+weight = 12
+[params]
+brand = "Blackburn"
+dateformat = "2006-01-02T00:00:00+00:00"
+disqus = "Your Disqus shortname"
+googleanalytics = "Your Google Analytics tracking ID"
+highlightjs = "androidstudio"
+subtitle = "A Hugo Theme"
+[social]
+facebook = "*"
+github = "yoshiharuyamashita"
+instagram = "*"
+linkedin = "*"
+stackoverflow = "*"
+twitter = "*"
+[taxonomy]
+product = "make"
