@@ -30,38 +30,38 @@ title = "HO"
 weight = 4
 [languages.ia]
 languageCode = "ia"
-languageName = "INR"
-title = "INR"
+languageName = "IA"
+title = "IA"
 weight = 6
 [languages.eu]
 languageCode = "eu"
-languageName = "EUR"
-title = "EUR"
+languageName = "EU"
+title = "EU"
 weight = 7
 [languages.mn]
 languageCode = "mn"
-languageName = "MXN"
-title = "MXN"
+languageName = "MN"
+title = "MN"
 weight = 8
 [languages.nv]
 languageCode = "nv"
-languageName = "NZD"
-title = "NZD"
+languageName = "NV"
+title = "NV"
 weight = 9
 [languages.sw]
 languageCode = "sw"
-languageName = "SGD"
-title = "SGD"
+languageName = "SW"
+title = "SW"
 weight = 10
 [languages.za]
 languageCode = "za"
-languageName = "ZAR"
-title = "ZAR"
+languageName = "ZA"
+title = "ZA"
 weight = 11
 [languages.tw]
 languageCode = "tw"
-languageName = "TWD"
-title = "TWD"
+languageName = "TW"
+title = "TW"
 weight = 12
 [params]
 brand = "Blackburn"
