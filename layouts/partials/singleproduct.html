@@ -6,18 +6,18 @@
   </div>
   <div class="row padding-top image-box-product">
     <div class="col-md-6">
-      <img src="{{ .Params.image_prod_page }}" class="img-fluid" alt="Cinque Terre">
+      <img src="" class="img-fluid" alt="Cinque Terre">
     </div>
     <div class="col-md-6 padding-top-change">
       <div class="row">
         <div class="col-md-12">
           <div class="">
-            <span class="gcm-header">Price: </span>{{ .Params.price }}
+            <span class="gcm-header">Price: </span>
           </div>
-          <div class="padding-top">{{ .Params.sendowl | safeHTML }}</div>
+          <div class="padding-top"></div>
         </div>
       </div>
-      {{ partial "partial_cart.html" . }}
+
     </div>
   </div>
   <div class="row padding-top">
@@ -27,10 +27,10 @@
         <li class="list-group-item">
           <table class="">
             <tr class="text-left">
-              <td><span class="gcm-header">No. of Pages:</span> {{ .Params.manual_pages }}</td>
-              <td><span class="gcm-header">File size download:</span> {{ .Params.manual_size }}</td>
-              <td><span class="gcm-header">File type:</span> {{ .Params.manual_type }}</td>
-              <td><span class="gcm-header">File:</span> {{ .Params.manual_file_type }}</td>
+              <td><span class="gcm-header">No. of Pages:</span> </td>
+              <td><span class="gcm-header">File size download:</span> </td>
+              <td><span class="gcm-header">File type:</span> </td>
+              <td><span class="gcm-header">File:</span> </td>
             </tr>
           </table>
         </li>
@@ -42,7 +42,7 @@
   {{ partial "tableofcontent.html" . }}
   <div class="row padding-top">
     <div class="col-md-12 text-center">
-        {{ .Params.sendowl | safeHTML }}
+
     </div>
   </div>
   {{ partial "partial_download.html" . }}
