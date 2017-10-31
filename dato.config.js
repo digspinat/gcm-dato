@@ -33,7 +33,7 @@ module.exports = (dato, root, i18n) => {
     });
   });
 
-  console.log(dato.pages);
+  // console.log(dato.pages);
   root.directory("content/pages", (articlesDir) => {
     i18n.availableLocales.forEach((locale) => {
       i18n.withLocale(locale, () => {
