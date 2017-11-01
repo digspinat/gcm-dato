@@ -25,13 +25,15 @@
       <ul class="list-group">
         <li class="list-group-item my-active"><span class="">File Information</li>
         <li class="list-group-item">
-          <table class="">
+          <table class="table borderless">
+            {{ range .Params.carspec }}
             <tr class="text-left">
-              <td><span class="gcm-header">No. of Pages:</span> </td>
-              <td><span class="gcm-header">File size download:</span> </td>
-              <td><span class="gcm-header">File type:</span> </td>
-              <td><span class="gcm-header">File:</span> </td>
+              <td><span class="gcm-header">No. of Pages:</span> {{ .manualSpecNoOfPages }}</td>
+              <td><span class="gcm-header">File size download:</span> {{ .manualSpecFileSize }}</td>
+              <td><span class="gcm-header">File type:</span> {{ .manualSpecFormat }}</td>
+              <td><span class="gcm-header">File:</span> {{ .manualSpecType }} </td>
             </tr>
+            {{ end }}
           </table>
         </li>
       </ul>
