@@ -1,5 +1,5 @@
 author = "Yoshiharu Yamashita"
-baseurl = "https://gcm-dato.netlify.com/"
+baseurl = "https://carmanualslib.com/"
 canonifyurls = false
 copyright = "&copy; 2016. All rights reserved."
 paginate = 10
@@ -8,8 +8,9 @@ title = "Blackburn Theme Demo"
 product = "make"
 tag = "tags"
 topic = "topics"
+[languages]
 [languages.en]
-languageCode = "en"
+languageCode = "en-us"
 languageName = "USD"
 title = "USD"
 weight = 1
