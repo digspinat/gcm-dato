@@ -5,7 +5,37 @@
       <h1>German Car Manual</h1>
     </div>
     <div class="row" id="product_data">
-      {{ range (where .Site.Pages "Section" "manuals") }}
+      {{ range .Data.Pages }}
+        {{ if eq .Type "product" }}
+        <div class="col-md-4">
+          <div class="ibox">
+            <div class="ibox-content product-box">
+              <div class="product-imitation">
+                <a href="{{ .Permalink }}"><img src="{{ .Params.imagecover }}" style="width:200px;height:266px;" alt="" ></a>
+              </div>
+              <div class="product-desc">
+                <small class="text-muted"></small>
+                <a href="{{ .Permalink }}" class="product-name">{{ .Title }}</a>
+                <ul class="gcm-header-list">
+                  <li>Make: {{ .Params.make }}</li>
+                  <li>Series: {{ .Params.serie }}</li>
+                  <li>Subsiries: {{ .Params.sub_serie }}</li>
+                  <li>Engine: {{ .Params.engine }}</li>
+                  <li>Platform: {{ .Params.platform }}, Year: {{ .Params.year }}</li>
+                </ul>
+                <div class="row">
+                    <a href="{{ .URL }}" class="btn btn-primary btn-outline">More Info</a>&nbsp;&nbsp;&nbsp;
+                    <div class="owl-image" style="width:10px;height:5px;">
+                      {{ .Params.sendowlmd }}
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{ end }}
+      {{ end }}
+      <!-- {{ range (where .Site.Pages "Section" "manuals") }}
       <div class="col-md-4">
         <div class="ibox">
           <div class="ibox-content product-box">
@@ -32,7 +62,8 @@
           </div>
         </div>
       </div>
-      {{ end }}
+      {{ end }} -->
+
       <!-- {{ range .Data.Pages }}
           {{ if eq .Type "product" }}
           <div class="col-md-4">
@@ -75,11 +106,7 @@
     </div>
     <div class="row text-center">
       <div class="padding-top">
-        {{ range .Site.Pages }}
-          {{ if eq .Title "Home part 001" }}
-            {{ .Content | safeHTML }}
-          {{ end }}
-        {{ end }}
+
       </div>
     </div>
   </div>

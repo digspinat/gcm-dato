@@ -6,18 +6,17 @@
   </div>
   <div class="row padding-top image-box-product">
     <div class="col-md-6">
-      <img src="" class="img-fluid" alt="Cinque Terre">
+      <img src="{{ .Params.imagecover }}" class="img-fluid" alt="Cinque Terre">
     </div>
     <div class="col-md-6 padding-top-change">
       <div class="row">
         <div class="col-md-12">
           <div class="">
-            <span class="gcm-header">Price: </span>
+            <span class="gcm-header">Price: {{ .Params.manualprice }}</span>
           </div>
-          <div class="padding-top"></div>
+          <div class="padding-top"> {{ .Params.sendowlmd }} </div>
         </div>
       </div>
-
     </div>
   </div>
   <div class="row padding-top">
@@ -39,6 +38,26 @@
   </div>
   {{ partial "propsncons.html" . }}
   {{ partial "gtm_code.html" . }}
+  <div class="row padding-top">
+    <div class="col-md-12">
+      <ul class="list-group">
+        <li class="list-group-item my-active"><span class="">Manual Description</li>
+        <li class="list-group-item">
+          {{ .Params.manualdescription }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row padding-top">
+    <div class="col-md-12">
+      <ul class="list-group">
+        <li class="list-group-item my-active"><span class="">Manual Cover</li>
+        <li class="list-group-item">
+          {{ .Params.manualcover }}
+        </li>
+      </ul>
+    </div>
+  </div>
   {{ partial "tableofcontent.html" . }}
   <div class="row padding-top">
     <div class="col-md-12 text-center">

@@ -4,66 +4,11 @@ canonifyurls = false
 copyright = "&copy; 2016. All rights reserved."
 paginate = 10
 title = "Blackburn Theme Demo"
+DefaultContentLanguage = "en"
 [indexes]
-product = "make"
+product = "manual"
 tag = "tags"
 topic = "topics"
-[languages]
-[languages.en]
-languageCode = "en-us"
-languageName = "USD"
-title = "USD"
-weight = 1
-[languages.az]
-languageCode = "az"
-languageName = "AZ"
-title = "AZ"
-weight = 2
-[languages.cy]
-languageCode = "cy"
-languageName = "CY"
-title = "CY"
-weight = 3
-[languages.ho]
-languageCode = "ho"
-languageName = "HO"
-title = "HO"
-weight = 4
-[languages.ia]
-languageCode = "ia"
-languageName = "IA"
-title = "IA"
-weight = 6
-[languages.eu]
-languageCode = "eu"
-languageName = "EU"
-title = "EU"
-weight = 7
-[languages.mn]
-languageCode = "mn"
-languageName = "MN"
-title = "MN"
-weight = 8
-[languages.nv]
-languageCode = "nv"
-languageName = "NV"
-title = "NV"
-weight = 9
-[languages.sw]
-languageCode = "sw"
-languageName = "SW"
-title = "SW"
-weight = 10
-[languages.za]
-languageCode = "za"
-languageName = "ZA"
-title = "ZA"
-weight = 11
-[languages.tw]
-languageCode = "tw"
-languageName = "TW"
-title = "TW"
-weight = 12
 [params]
 brand = "Blackburn"
 dateformat = "2006-01-02T00:00:00+00:00"
@@ -79,4 +24,4 @@ linkedin = "*"
 stackoverflow = "*"
 twitter = "*"
 [taxonomy]
-product = "make"
+product = "manual"

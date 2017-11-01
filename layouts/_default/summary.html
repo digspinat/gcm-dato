@@ -2,22 +2,22 @@
   <div class="ibox">
     <div class="ibox-content product-box">
       <div class="product-imitation">
-        <a href="{{ .URL | absLangURL }}"><img src="{{ .Params.image_cat_page }}" alt="" ></a>
+        <a href="{{ .Permalink }}"><img src="{{ .Params.imagecover }}" style="width:200px;height:266px;" alt="" ></a>
       </div>
       <div class="product-desc">
         <small class="text-muted"></small>
-        <a href="{{ .URL | absLangURL }}" class="product-name">{{ .Title }}</a>
+        <a href="{{ .Permalink }}" class="product-name">{{ .Title }}</a>
         <ul class="gcm-header-list">
-          <li>Make: {{ .Params.make }}</li>
+          <!-- <li>Make: {{ .Params.make }}</li>
           <li>Series: {{ .Params.serie }}</li>
           <li>Subsiries: {{ .Params.sub_serie }}</li>
           <li>Engine: {{ .Params.engine }}</li>
-          <li>Platform: {{ .Params.platform }}, Year: {{ .Params.year }}</li>
+          <li>Platform: {{ .Params.platform }}, Year: {{ .Params.year }}</li> -->
         </ul>
         <div class="row">
-            <a href="{{ .Permalink }}" class="btn btn-primary btn-outline">More Info</a>&nbsp;&nbsp;&nbsp;
+            <a href="{{ .URL }}" class="btn btn-primary btn-outline">More Info</a>&nbsp;&nbsp;&nbsp;
             <div class="owl-image" style="width:10px;height:5px;">
-              {{ .Params.sendowl | safeHTML }}
+              {{ .Params.sendowlmd }}
             </div>
         </div>
       </div>

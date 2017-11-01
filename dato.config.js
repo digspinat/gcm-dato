@@ -1,17 +1,15 @@
 module.exports = (dato, root, i18n) => {
-
+  // console.log(dato.manuals)
   root.directory("content/manuals", (articlesDir) => {
-    i18n.availableLocales.forEach((locale) => {
-      i18n.withLocale(locale, () => {
         dato.manuals.forEach((article) => {
           articlesDir.createPost(
-            `${article.url}.${locale}.md`, "yaml", {
+            `${article.url}.md`, "yaml", {
               frontmatter: {
                 title: article.manualTitle,
                 previewpdf: article.previewPdf.toMap(),
                 manualspec: article.manualSpec.toMap(),
                 imagecover: article.imageCover,
-                blockcarspec: article.blockCarSpec.toMap(),
+                carspec: article.manualSpec.toMap(),
                 url: article.url,
                 downloadid: article.downloadId,
                 sendowlmd: article.sendowlMd,
@@ -23,23 +21,19 @@ module.exports = (dato, root, i18n) => {
                 manualdescription: article.manualDescription,
                 manualyear: article.manualYear,
                 gsTitle: article.gsTitle,
-                type: "product"
+                type: "product",
+                manual: article.manualMake
               },
               content: article.manualDescription
             }
           );
         });
-      });
-    });
   });
 
-  // console.log(dato.pages);
   root.directory("content/pages", (articlesDir) => {
-    i18n.availableLocales.forEach((locale) => {
-      i18n.withLocale(locale, () => {
         dato.pages.forEach((article, i) => {
           articlesDir.createPost(
-            `${article.slugurl}.${locale}.md`, "yaml", {
+            `${article.slugurl}.md`, "yaml", {
               frontmatter: {
                 title: article.pageTitle,
                 weight: i,
@@ -49,9 +43,21 @@ module.exports = (dato, root, i18n) => {
               content: article.pageDescription
             }
           );
-        });
-      });
     });
+  });
+
+  // console.log(dato.headerMenu);
+  root.directory("content/headermenu", (articlesDir) => {
+    articlesDir.createPost(
+      `headermenu.md`, "yaml", {
+        frontmatter: {
+          title: "Header Menu",
+          type: "sub-menu",
+          id: "sub-menu",
+          menuitem: dato.headerMenu.menu.toMap()
+        },
+        content: "Header Menu"
+      });
   });
 
 };

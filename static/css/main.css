@@ -1,3 +1,27 @@
+/*Sub menu*/
+/*.custom-submenu ul{
+  display: none;
+  position: absolute;
+  margin-top: 1px;
+  left: -1px;
+}
+
+.custom-submenu :hover ul{
+  display: block;
+  z-index: 101;
+  overflow: auto;
+}*/
+.dropdown-submenu {
+    position: relative;
+    z-index: 1;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+}
+
 .gcm-header-list{
   color: black;
   padding: 4px;
@@ -70,7 +94,7 @@
 /*Container CSS*/
 .my_content{
   margin-bottom: 0px;
-  margin-top: 154px;
+  margin-top: 138px;
 }
 
 .gcm-header{
