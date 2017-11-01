@@ -11,16 +11,19 @@
   z-index: 101;
   overflow: auto;
 }*/
-table {
+.my-table table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
 
-td, th {
+.my-table td, th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+}
+.borderless td, .borderless th {
+    border: none;
 }
 
 /*tr:nth-child(even) {

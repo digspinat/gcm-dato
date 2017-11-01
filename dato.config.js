@@ -2,7 +2,7 @@ module.exports = (dato, root, i18n) => {
   // console.log(dato.manuals)
   root.directory("content/manuals", (articlesDir) => {
         dato.manuals.forEach((article) => {
-          // console.log(article.blockProCon.pcCon);
+          // console.log(article.blockAddToCart.addToCartItem);
           articlesDir.createPost(
             `${article.url}.md`, "yaml", {
               frontmatter: {
@@ -25,7 +25,8 @@ module.exports = (dato, root, i18n) => {
                 type: "product",
                 manual: article.manualMake,
                 pccon: article.blockProCon.pcCon,
-                pcpro: article.blockProCon.pcPro
+                pcpro: article.blockProCon.pcPro,
+                partialaddtocart: article.blockAddToCart.addToCartItem
               },
               content: article.manualDescription
             }
