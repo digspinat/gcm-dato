@@ -14,7 +14,7 @@
           <div class="">
             <span class="gcm-header">Price: {{ .Params.manualprice }}</span>
           </div>
-          <div class="padding-top"> {{ .Params.sendowlmd }} </div>
+          <div class="padding-top"> {{ .Params.sendowlmd | safeHTML }} </div>
         </div>
       </div>
     </div>
@@ -43,7 +43,7 @@
       <ul class="list-group">
         <li class="list-group-item my-active"><span class="">Manual Description</li>
         <li class="list-group-item">
-          {{ .Params.manualdescription }}
+            {{ .Params.manualdescription | markdownify }}
         </li>
       </ul>
     </div>
@@ -53,7 +53,7 @@
       <ul class="list-group">
         <li class="list-group-item my-active"><span class="">Manual Cover</li>
         <li class="list-group-item">
-          {{ .Params.manualcover }}
+            {{ .Params.manualcover | markdownify }}
         </li>
       </ul>
     </div>
