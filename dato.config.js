@@ -1,5 +1,5 @@
 module.exports = (dato, root, i18n) => {
-  // console.log(dato.manuals)
+  console.log(dato.manuals)
   root.directory("content/manuals", (articlesDir) => {
         dato.manuals.forEach((article) => {
           // console.log(article.blockAddToCart.addToCartItem);
@@ -26,7 +26,12 @@ module.exports = (dato, root, i18n) => {
                 manual: article.manualMake,
                 pccon: article.blockProCon.pcCon,
                 pcpro: article.blockProCon.pcPro,
-                partialaddtocart: article.blockAddToCart.addToCartItem
+                partialaddtocart: article.blockAddToCart.addToCartItem,
+                series: article.manualSerie,
+                subseries: article.manualSubSerie,
+                platform: article.manualPlatform,
+                bodytype: article.manualBodyType,
+                fueltype: article.manualFuelType
               },
               content: article.manualDescription
             }
