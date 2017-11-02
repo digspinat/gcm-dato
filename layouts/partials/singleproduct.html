@@ -15,7 +15,7 @@
             <span class="gcm-header">Price: {{ .Params.manualprice }}</span>
           </div>
           <div class="padding-top"> {{ .Params.sendowlmd | safeHTML }} </div>
-          <div class="padding-top"> {{ .Params.partialaddtocart | markdownify }} </div>
+          <div class="padding-top my-partial-addtocart"> {{ .Params.partialaddtocart | markdownify }} </div>
           <div class="panel padding-top">
             <div class="panel-heading">
                 <h3 class="panel-title my-active">Car Specification</h3>
@@ -155,8 +155,14 @@
   </div> -->
   {{ partial "tableofcontent.html" . }}
   <div class="row padding-top">
-    <div class="col-md-12 text-center">
+    <div class="col-md-12">
+        <h4 class="my-active" style="padding-left:31px;">Description</h4>
+        <div class="row">
 
+          <div class="col-sm-3" style="padding-left:49px;">
+
+          </div>
+        </div>
     </div>
   </div>
   {{ partial "partial_download.html" . }}
