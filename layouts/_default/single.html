@@ -4,8 +4,8 @@
   {{ if eq .Type "product" }}
     {{ partial "singleproduct.html" . }}
   {{ end }}
-  {{ if eq .Type "pages" }}
-    {{ partial .Params.id . }}
+  {{ if eq .Type "topmenu" }}
+    {{ partial "page.html" . }}
   {{ end }}
 </div>
 <!-- <div class="header">

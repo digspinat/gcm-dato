@@ -1,8 +1,8 @@
 module.exports = (dato, root, i18n) => {
-  console.log(dato.manuals)
+  // console.log(dato.manuals)
   root.directory("content/manuals", (articlesDir) => {
         dato.manuals.forEach((article) => {
-          // console.log(article.blockAddToCart.addToCartItem);
+          // console.log(article.relatedManual);
           articlesDir.createPost(
             `${article.url}.md`, "yaml", {
               frontmatter: {
@@ -31,7 +31,9 @@ module.exports = (dato, root, i18n) => {
                 subseries: article.manualSubSerie,
                 platform: article.manualPlatform,
                 bodytype: article.manualBodyType,
-                fueltype: article.manualFuelType
+                fueltype: article.manualFuelType,
+                downloadspecs: article.downloadSpecs.toMap(),
+                relatedmanual: article.relatedManual.toMap()
               },
               content: article.manualDescription
             }
@@ -39,21 +41,21 @@ module.exports = (dato, root, i18n) => {
         });
   });
 
-  root.directory("content/pages", (articlesDir) => {
-        dato.pages.forEach((article, i) => {
-          articlesDir.createPost(
-            `${article.slugurl}.md`, "yaml", {
-              frontmatter: {
-                title: article.pageTitle,
-                weight: i,
-                type: "pages",
-                id: article.slugurl
-              },
-              content: article.pageDescription
-            }
-          );
-    });
-  });
+  // root.directory("content/pages", (articlesDir) => {
+  //       dato.pages.forEach((article, i) => {
+  //         articlesDir.createPost(
+  //           `${article.slugurl}.md`, "yaml", {
+  //             frontmatter: {
+  //               title: article.pageTitle,
+  //               weight: i,
+  //               type: "pages",
+  //               id: article.slugurl
+  //             },
+  //             content: article.pageDescription
+  //           }
+  //         );
+  //   });
+  // });
 
   // console.log(dato.headerMenu);
   root.directory("content/headermenu", (articlesDir) => {
@@ -67,6 +69,28 @@ module.exports = (dato, root, i18n) => {
         },
         content: "Header Menu"
       });
+  });
+
+  // console.log(dato.menuTops);
+  root.directory("content/topmenus", (articlesDir) => {
+        dato.menuTops.forEach((article, i) => {
+          // console.log(article.topMenuLink);
+          articlesDir.createPost(
+            `${article.slugUrl}.md`, "yaml", {
+              frontmatter: {
+                title: article.topMenuName,
+                weight: i,
+                type: "topmenu",
+                id: article.slugUrl,
+                pageicon: article.topMenuLink.pageIcon,
+                slugurl: article.topMenuLink.slugurl,
+                description: article.topMenuLink.pageDescription,
+                pagetitle: article.topMenuLink.pageTitle
+              },
+              content: article.topMenuName
+            }
+          );
+    });
   });
 
 };

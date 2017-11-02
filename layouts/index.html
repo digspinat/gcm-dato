@@ -17,16 +17,15 @@
                 <small class="text-muted"></small>
                 <a href="{{ .Permalink }}" class="product-name">{{ .Title }}</a>
                 <ul class="gcm-header-list">
-                  <li>Make: {{ .Params.make }}</li>
-                  <li>Series: {{ .Params.serie }}</li>
-                  <li>Subsiries: {{ .Params.sub_serie }}</li>
-                  <li>Engine: {{ .Params.engine }}</li>
-                  <li>Platform: {{ .Params.platform }}, Year: {{ .Params.year }}</li>
+                  <li>Make: {{ .Params.manual }}</li>
+                  <li>Series: {{ .Params.series }}</li>
+                  <li>Subseries: {{ .Params.subseries }}</li>
+                  <li>Platform: {{ .Params.platform }}, Year: {{ .Params.manualyear }}</li>
                 </ul>
                 <div class="row">
                     <a href="{{ .URL }}" class="btn btn-primary btn-outline">More Info</a>&nbsp;&nbsp;&nbsp;
                     <div class="owl-image" style="width:10px;height:5px;">
-                      {{ .Params.sendowlmd }}
+                      {{ .Params.sendowlmd | markdownify }}
                     </div>
                 </div>
               </div>

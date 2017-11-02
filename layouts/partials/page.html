@@ -3,8 +3,8 @@
       <h1>{{ .Title }}</h1>
     </div>
     <div class="row padding-top">
-      <div class="col-md-12 text-center">
-        {{ .Content }}
+      <div class="col-md-12">
+        {{ .Description | markdownify }}
       </div>
     </div>
 </div>

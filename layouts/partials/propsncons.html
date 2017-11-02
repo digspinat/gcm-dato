@@ -1,12 +1,24 @@
 <div class="row padding-top">
   <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item"><span class="my-active">Props & cons</span><br>
-        <div style="padding:10px;">
-          {{ .Params.pccon | markdownify }} <br />
-          {{ .Params.pcpro | markdownify }}
-        </div>
-      </li>
-    </ul>
+      <!-- <h4 class="my-active" style="padding-left:31px;">Description</h4> -->
+      <div class="row">
+          <div style="col-sm-12" >
+            <div class="" style="padding-left:45px;">
+              {{ .Params.pcpro | markdownify }}
+              {{ .Params.pccon | markdownify }}
+            </div>
+          </div>
+      </div>
   </div>
 </div>
+
+<!-- <div class="row padding-top">
+  <div class="col-md-12">
+    <ul class="list-group">
+        <div style="padding:10px;">
+          {{ .Params.pcpro | markdownify }}
+          {{ .Params.pccon | markdownify }}
+        </div>
+    </ul>
+  </div>
+</div> -->

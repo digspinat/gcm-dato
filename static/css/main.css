@@ -25,10 +25,9 @@
 .borderless td, .borderless th {
     border: none;
 }
-
-/*tr:nth-child(even) {
-    background-color: #dddddd;
-}*/
+.borderless tr:nth-child(even) {
+  background-color: #f5f6f8;
+}
 .dropdown-submenu {
     position: relative;
     z-index: 1;
@@ -112,7 +111,7 @@
 /*Container CSS*/
 .my_content{
   margin-bottom: 0px;
-  margin-top: 138px;
+  margin-top: 159px;
 }
 
 .gcm-header{

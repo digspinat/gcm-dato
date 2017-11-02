@@ -22,35 +22,86 @@
   </div>
   <div class="row padding-top">
     <div class="col-md-12">
-      <ul class="list-group">
-        <li class="list-group-item my-active"><span class="">File Information</li>
-        <li class="list-group-item">
-          <table class="table borderless">
-            {{ range .Params.carspec }}
-            <tr class="text-left">
-              <td><span class="gcm-header">No. of Pages:</span> {{ .manualSpecNoOfPages }}</td>
-              <td><span class="gcm-header">File size download:</span> {{ .manualSpecFileSize }}</td>
-              <td><span class="gcm-header">File type:</span> {{ .manualSpecFormat }}</td>
-              <td><span class="gcm-header">File:</span> {{ .manualSpecType }} </td>
-            </tr>
-            {{ end }}
-          </table>
-        </li>
-      </ul>
+        <h4 class="my-active" style="padding-left:31px;">Manual Specification</h4>
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-11"> <br>
+            <table class="table borderless">
+              {{ range .Params.carspec }}
+                <tr class="text-left">
+                  <td><span class="gcm-header">Manual Type:</span> {{ .manualSpecType }}</td>
+                </tr>
+                <tr>
+                  <td><span class="gcm-header">No. of Pages:</span> {{ .manualSpecNoOfPages }}</td>
+                </tr>
+                <tr>
+                  <td><span class="gcm-header">File Size:</span> {{ .manualSpecFileSize }}</td>
+                </tr>
+                <tr>
+                  <td><span class="gcm-header">Format:</span> {{ .manualSpecFormat }} </td>
+                </tr>
+                <tr>
+                  <td><span class="gcm-header">Language:</span> {{ .manualSpecLanguage }} </td>
+                </tr>
+                <tr>
+                  <td><span class="gcm-header">Suitable for:</span> {{ .suitableFor }} </td>
+                </tr>
+              {{ end }}
+            </table>
+          </div>
+        </div>
     </div>
   </div>
+  <!-- <div class="row padding-top">
+    <div class="col-md-12">
+      <ul class="list-group">
+          <table class="table borderless">
+            {{ range .Params.carspec }}
+              <tr class="text-left">
+                <td><span class="gcm-header">Manual Type:</span> {{ .manualSpecType }}</td>
+              </tr>
+              <tr>
+                <td><span class="gcm-header">No. of Pages:</span> {{ .manualSpecNoOfPages }}</td>
+              </tr>
+              <tr>
+                <td><span class="gcm-header">File Size:</span> {{ .manualSpecFileSize }}</td>
+              </tr>
+              <tr>
+                <td><span class="gcm-header">Format:</span> {{ .manualSpecFormat }} </td>
+              </tr>
+              <tr>
+                <td><span class="gcm-header">Language:</span> {{ .manualSpecLanguage }} </td>
+              </tr>
+              <tr>
+                <td><span class="gcm-header">Suitable for:</span> {{ .suitableFor }} </td>
+              </tr>
+            {{ end }}
+          </table>
+      </ul>
+    </div>
+  </div> -->
   {{ partial "propsncons.html" . }}
   <div class="row padding-top">
     <div class="col-md-12">
-      <ul class="list-group">
-        <li class="list-group-item my-active"><span class="">Manual Description</li>
-        <li class="list-group-item">
+        <h4 class="my-active" style="padding-left:31px;">Description</h4>
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-11"> <br>
             {{ .Params.manualdescription | markdownify }}
-        </li>
-      </ul>
+          </div>
+        </div>
     </div>
   </div>
-  <div class="row padding-top">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="row">
+          <div class="col-sm-12 my-table" style="padding:30px;"> <br>
+            {{ .Params.manualcover | markdownify }}
+          </div>
+        </div>
+    </div>
+  </div>
+  <!-- <div class="row padding-top">
     <div class="col-md-12">
       <ul class="list-group">
         <li class="list-group-item my-active"><span class="">Manual Cover</li>
@@ -59,7 +110,7 @@
         </li>
       </ul>
     </div>
-  </div>
+  </div> -->
   {{ partial "tableofcontent.html" . }}
   <div class="row padding-top">
     <div class="col-md-12 text-center">
@@ -67,4 +118,5 @@
     </div>
   </div>
   {{ partial "partial_download.html" . }}
+  {{ partial "related_manual.html" . }}
 </div>

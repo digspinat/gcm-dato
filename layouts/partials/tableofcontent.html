@@ -1,43 +1,44 @@
 <div class="panel padding-top">
   <div class="panel-heading">
-      <h3 class="panel-title gcm-header">Car Specification</h3>
+      <h3 class="panel-title my-active" style="padding-left: 31px;">Car Specification</h3>
   </div>
-  <div class="col-md-4 padding-top">
-    <table class="table borderless">
-      <tr>
-        <td class="gcm-header">Make</td>
-        <td>{{ .Params.manual }}</td>
-      </tr>
-      <tr>
-        <td class="gcm-header">Serie</td>
-        <td>{{ .Params.series }}</td>
-      </tr>
-      <tr>
-        <td class="gcm-header">Sub-serie</td>
-        <td>{{ .Params.subseries }}</td>
-      </tr>
-      <tr>
-        <td class="gcm-header">Platform</td>
-        <td>{{ .Params.platform }}</td>
-      </tr>
-      <!-- <tr>
-        <td class="gcm-header">Engine</td>
-        <td>{{ .Params.engine }}</td>
-      </tr> -->
-      <tr>
-        <td class="gcm-header">Year</td>
-        <td>{{ .Params.manualyear }}</td>
-      </tr>
-      <tr>
-        <td class="gcm-header">Body Type</td>
-        <td>{{ .Params.bodytype }}</td>
-      </tr>
-      <tr>
-        <td class="gcm-header">Fuel Type</td>
-        <td>{{ .Params.fueltype }}</td>
-      </tr>
-    </table>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-11" style="padding-top:27px;">
+      <table width="30%" class="borderless" style="">
+        <tr>
+          <td class="gcm-header">Make</td>
+          <td>{{ .Params.manual }}</td>
+        </tr>
+        <tr>
+          <td class="gcm-header">Serie</td>
+          <td>{{ .Params.series }}</td>
+        </tr>
+        <tr>
+          <td class="gcm-header">Sub-serie</td>
+          <td>{{ .Params.subseries }}</td>
+        </tr>
+        <tr>
+          <td class="gcm-header">Platform</td>
+          <td>{{ .Params.platform }}</td>
+        </tr>
+        <!-- <tr>
+          <td class="gcm-header">Engine</td>
+          <td>{{ .Params.engine }}</td>
+        </tr> -->
+        <tr>
+          <td class="gcm-header">Year</td>
+          <td>{{ .Params.manualyear }}</td>
+        </tr>
+        <tr>
+          <td class="gcm-header">Body Type</td>
+          <td>{{ .Params.bodytype }}</td>
+        </tr>
+        <tr>
+          <td class="gcm-header">Fuel Type</td>
+          <td>{{ .Params.fueltype }}</td>
+        </tr>
+      </table>
+    </div>
   </div>
-  <div class="col-md-4"></div>
-  <div class="col-md-4"></div>
 </div>
