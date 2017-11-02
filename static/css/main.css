@@ -36,6 +36,22 @@ Add transition to containers so they can push in and out.
         margin-top: 0;
     }
 
+    .header {
+      font-family: "Raleway", Helvetica, Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    a {
+      color: #3b8bba;
+      text-decoration: none;
+    }
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #265778;
+    }
 
 .ul-fontawsme h3 {
   font-size: 20px;

@@ -23,8 +23,8 @@
           </select> -->
       </div>
     </div>
-  </div>
-<script src="{{ .Site.BaseURL }}js/ui.js"></script>
+</footer>
+<!-- <script src="{{ .Site.BaseURL }}js/ui.js"></script> -->
 <!-- <script type="text/javascript" src="{{ .Site.BaseURL }}js/lumos.js"></script> -->
 
 {{ partial "google_analytics.html" . }}
@@ -80,10 +80,5 @@
       window.addEventListener(WINDOW_CHANGE_EVENT, closemenu);
       })(this, this.document);
 </script>
-{{ range .Site.Pages }}
-  {{ if eq .Title "GA" }}
-    {{ .Content | safeHTML }}
-  {{ end }}
-{{ end }}
 </body>
 </html>
