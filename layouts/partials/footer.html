@@ -6,8 +6,7 @@
       <div class="col-md-8">
           {{ range .Site.Pages }}
             {{ if eq .Type "footer" }}
-              {{ .Description }} <br>
-              {{ .Content | safeHTML }}
+              {{ .Content | markdownify }}
             {{ end }}
           {{ end }}
       </div>

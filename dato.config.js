@@ -92,5 +92,18 @@ module.exports = (dato, root, i18n) => {
           );
     });
   });
+  // console.log(dato.footer.footerDescription);
+  root.directory("content/", (articlesDir) => {
+    articlesDir.createPost(
+      `footer.md`, "yaml", {
+        frontmatter: {
+          title: "footer",
+          type: "footer",
+          id: "footer",
+          menuitem: dato.footer.footerDescription
+        },
+        content: dato.footer.footerDescription
+      });
+  });
 
 };
