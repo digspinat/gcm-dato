@@ -154,17 +154,16 @@
     </div>
   </div> -->
   {{ partial "tableofcontent.html" . }}
-  <div class="row padding-top">
+  <!-- <div class="row padding-top">
     <div class="col-md-12">
-        <h4 class="my-active" style="padding-left:31px;">Description</h4>
+        <h4 class="my-active" style="padding-left:31px;">Image Preview</h4>
         <div class="row">
-
-          <div class="col-sm-3" style="padding-left:49px;">
-
-          </div>
+          {{ range .Params.previewpdf }}
+            <div class="col-sm-3" style=""><img src="{{ .imagesPreview }}" style="width:250px;height:250px;" alt=""></div>
+          {{ end }}
         </div>
     </div>
-  </div>
+  </div> -->
   {{ partial "partial_download.html" . }}
   {{ partial "related_manual.html" . }}
 </div>
