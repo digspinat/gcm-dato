@@ -11,6 +11,39 @@
   z-index: 101;
   overflow: auto;
 }*/
+.ul-fontawsme h3 {
+  font-size: 20px;
+  font-weight: 400px;
+  background-color: white;
+  color: #0085DA;
+}
+.ul-fontawsme li{
+  list-style: none;
+  margin: 1em;
+  margin-left: 1em;
+}
+.ul-fontawsme li:before{
+  content: '\f055';
+  font-family: 'FontAwesome';
+  /*background-color: #00B900;*/
+  float: left;
+  color: #00B900;
+  margin-left: -1.5em;
+}
+.ul-fontawsme-cons li{
+  list-style: none;
+  margin: 1em;
+  margin-left: 1em;
+}
+.ul-fontawsme-cons li:before{
+  content: '\f056';
+  font-family: 'FontAwesome';
+  /*background-color: #E50000;*/
+  color:#E50000;
+  float: left;
+  margin-left: -1.5em;
+}
+
 .my-table table {
     font-family: arial, sans-serif;
     border-collapse: collapse;

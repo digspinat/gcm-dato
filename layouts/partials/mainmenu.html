@@ -7,20 +7,20 @@
               <a href="#" class="custom-toggle " id="toggle"><s class="bar"></s><s class="bar"></s></a>
           </div>
       </div>
-      <div class="main-menu pure-u-1 pure-u-md-1-3">
+      <div class="main-menu pure-u-1 pure-u-md-1-3 text-right">
           <div class="pure-menu pure-menu-horizontal custom-can-transform">
               <ul class="pure-menu-list" >
                 <!-- {{ range .Data.Pages.ByWeight }}
                     {{ if eq .Type "pages" }}
                     {{ end }}
                 {{ end }} -->
-                {{ range (where .Site.Pages.ByWeight "Section" "topmenus") }}
+                <!-- {{ range (where .Site.Pages.ByWeight "Section" "topmenus") }}
                   {{ if eq .Title "Topmenus" }}
 
                   {{else}}
                     <li class="pure-menu-item menu-item-main"><a href="{{ .Permalink }}" class="pure-menu-link menu-color-white">{{ .Title }}</a></li>
                   {{end}}
-                {{ end }}
+                {{ end }} -->
                   <!-- <li class="pure-menu-item menu-main menu-item-main"><a href="#" class="pure-menu-link menu-color-white">Home</a></li>
                   <li class="pure-menu-item menu-item-main"><a href="#" class="pure-menu-link menu-color-white">Contact</a></li> -->
               </ul>
@@ -44,6 +44,14 @@
                     <li class="pure-menu-item menu-item-main"><a href="{{ .URL }}" class="pure-menu-link menu-color-white">{{ .Name }}</a></li>
                   {{end}}
                   {{end}}
+                  
+                  {{ range (where .Site.Pages.ByWeight "Section" "topmenus") }}
+                    {{ if eq .Title "Topmenus" }}
+
+                    {{else}}
+                      <li class="pure-menu-item menu-item-main"><a href="{{ .Permalink }}" class="pure-menu-link menu-color-white">{{ .Title }}</a></li>
+                    {{end}}
+                  {{ end }}
                   <!-- <li class="pure-menu-item menu-item-main"><a href="#" class="pure-menu-link menu-color-white">Yahoo</a></li>
                   <li class="pure-menu-item menu-item-main"><a href="#" class="pure-menu-link menu-color-white">W3C</a></li> -->
               </ul>
