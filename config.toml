@@ -3,14 +3,14 @@ baseurl = "https://carmanualslib.com/"
 canonifyurls = false
 copyright = "&copy; 2016. All rights reserved."
 paginate = 10
-title = "Blackburn Theme Demo"
+title = "German Car Manual"
 DefaultContentLanguage = "en"
 [indexes]
 product = "manual"
 tag = "tags"
 topic = "topics"
 [params]
-brand = "Blackburn"
+brand = "GCM"
 dateformat = "2006-01-02T00:00:00+00:00"
 disqus = "Your Disqus shortname"
 googleanalytics = "Your Google Analytics tracking ID"
