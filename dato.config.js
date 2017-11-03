@@ -41,35 +41,36 @@ module.exports = (dato, root, i18n) => {
         });
   });
 
-  // root.directory("content/pages", (articlesDir) => {
-  //       dato.pages.forEach((article, i) => {
-  //         articlesDir.createPost(
-  //           `${article.slugurl}.md`, "yaml", {
-  //             frontmatter: {
-  //               title: article.pageTitle,
-  //               weight: i,
-  //               type: "pages",
-  //               id: article.slugurl
-  //             },
-  //             content: article.pageDescription
-  //           }
-  //         );
-  //   });
-  // });
+  root.directory("content/", (articlesDir) => {
+        dato.pages.forEach((article, i) => {
+          articlesDir.createPost(
+            `${article.slugurl}.md`, "yaml", {
+              frontmatter: {
+                title: article.pageTitle,
+                weight: i,
+                type: "topmenu",
+                id: article.slugurl,
+                description: article.pageDescription
+              },
+              content: article.pageDescription
+            }
+          );
+    });
+  });
 
   // console.log(dato.headerMenu);
-  root.directory("content/headermenu", (articlesDir) => {
-    articlesDir.createPost(
-      `headermenu.md`, "yaml", {
-        frontmatter: {
-          title: "Header Menu",
-          type: "sub-menu",
-          id: "sub-menu",
-          menuitem: dato.headerMenu.menu.toMap()
-        },
-        content: "Header Menu"
-      });
-  });
+  // root.directory("content/headermenu", (articlesDir) => {
+  //   articlesDir.createPost(
+  //     `headermenu.md`, "yaml", {
+  //       frontmatter: {
+  //         title: "Header Menu",
+  //         type: "sub-menu",
+  //         id: "sub-menu",
+  //         menuitem: dato.headerMenu.menu.toMap()
+  //       },
+  //       content: "Header Menu"
+  //     });
+  // });
 
   // console.log(dato.menuTops);
   root.directory("content/", (articlesDir) => {
