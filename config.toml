@@ -3,7 +3,7 @@ baseurl = "https://carmanualslib.com/"
 canonifyurls = false
 copyright = "&copy; 2016. All rights reserved."
 paginate = 10
-title = "German Car Manual"
+title = "German Car Manuals"
 DefaultContentLanguage = "en"
 [indexes]
 product = "manual"
