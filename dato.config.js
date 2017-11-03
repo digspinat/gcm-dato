@@ -83,6 +83,7 @@ module.exports = (dato, root, i18n) => {
                 weight: i,
                 type: "topmenu",
                 id: article.slugUrl,
+                myid: "menutop",
                 pageicon: article.topMenuLink.pageIcon,
                 slugurl: article.topMenuLink.slugurl,
                 description: article.topMenuLink.pageDescription,
