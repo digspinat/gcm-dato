@@ -72,7 +72,7 @@ module.exports = (dato, root, i18n) => {
   });
 
   // console.log(dato.menuTops);
-  root.directory("content/topmenus", (articlesDir) => {
+  root.directory("content/", (articlesDir) => {
         dato.menuTops.forEach((article, i) => {
           // console.log(article.topMenuLink);
           articlesDir.createPost(
@@ -85,7 +85,8 @@ module.exports = (dato, root, i18n) => {
                 pageicon: article.topMenuLink.pageIcon,
                 slugurl: article.topMenuLink.slugurl,
                 description: article.topMenuLink.pageDescription,
-                pagetitle: article.topMenuLink.pageTitle
+                pagetitle: article.topMenuLink.pageTitle,
+                menu: true
               },
               content: article.topMenuName
             }
