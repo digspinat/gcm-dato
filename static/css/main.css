@@ -17,6 +17,73 @@
 /*
 Add transition to containers so they can push in and out.
 */
+
+/*my CSS*/
+.container-fluid {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 100%;
+}
+.pist-submenu {
+  margin-top:-16px;
+  background-color:#e1e9ee;
+  margin-left:50px;
+  margin-right:80px;
+}
+.my_ex_body{
+  margin-left: 65px;
+  margin-right: 65px;
+  background-color: white;
+}
+.pist-header{
+  background-color: #f9fafc;
+  height: 100px;
+  line-height: 60px;
+}
+.text-center {
+  text-align: center;
+}
+.my-footer{
+  background-color: #181c1e;
+  bottom:0;
+  height:100px;
+  margin: auto;
+  text-align: center;
+}
+.footer-content{
+  color: white;
+  padding: 20px;
+}
+.pist-borderbutton{
+  background-color: white;
+  color: black;
+  border: 2px solid #3b8bba;
+  display: inline;
+  padding: 10px;
+}
+.my_ex_body_product{
+  padding: 20px;
+  margin-left: 65px;
+  margin-right: 65px;
+  background-color: white;
+}
+
+
+
+
+
+
+
+/*End My CSS*/
 .header {
      margin: 0;
      color: #333;
@@ -117,6 +184,9 @@ Add transition to containers so they can push in and out.
 .borderless tr:nth-child(even) {
   background-color: #f5f6f8;
 }
+.borderless-1 td, .borderless-1 th {
+    border: none;
+}
 .dropdown-submenu {
     position: relative;
     z-index: 1;
@@ -133,6 +203,7 @@ Add transition to containers so they can push in and out.
   padding: 4px;
   font-size: 14px;
 }
+
 .fixed-my-menu{
   position: fixed;
   width: 100%;
@@ -146,10 +217,14 @@ Add transition to containers so they can push in and out.
 
 .my_content{
   background-color: #7a8690;
+  margin-bottom: 0px;
+  margin-top: 159px;
 }
+
 .container{
   background-color: white;
 }
+
 .my-submenu{
   padding-right: 0px;
   padding-left: 0px;
@@ -162,8 +237,10 @@ Add transition to containers so they can push in and out.
     transition: all .5s;
 }
 .owl-image img {
-  height: 38px;
+  height: 43px;
   width: 95px;
+  margin-top: -14px;
+
 }
 
 .my-active{
@@ -199,8 +276,7 @@ Add transition to containers so they can push in and out.
 }
 /*Container CSS*/
 .my_content{
-  margin-bottom: 0px;
-  margin-top: 159px;
+
 }
 
 .gcm-header{
