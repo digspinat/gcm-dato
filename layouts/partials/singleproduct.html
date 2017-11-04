@@ -6,7 +6,7 @@
     <div class="">
       <div class="pure-g">
         <div class="pure-u-1-2">
-          <img src="{{ .Params.imagecover }}" alt="Cinque Terre">
+          <img src="{{ .Params.imagecover }}" alt="Cinque Terre" style="margin-left:10px;">
         </div>
         <div class="pure-u-1-2">
           <div class="" style="">
@@ -59,40 +59,46 @@
           </div>
         </div>
       </div>
-      <div class="row padding-top">
-            <h4 class="my-active" style="padding-left:31px;">Manual Specification</h4>
-              <div class="col-sm-12" style="padding-left:49px;"> <br>
-                <table class="borderless" width="50%">
-                  {{ range .Params.carspec }}
-                    <tr class="text-left">
-                      <td class="gcm-header">Manual Type:</td>
-                      <td>{{ .manualSpecType }}</td>
-                    </tr>
-                    <tr>
-                      <td class="gcm-header">No. of Pages:</td>
-                      <td>{{ .manualSpecNoOfPages }}</td>
-                    </tr>
-                    <tr>
-                      <td class="gcm-header">File Size:</td>
-                      <td>{{ .manualSpecFileSize }}</td>
-                    </tr>
-                    <tr>
-                      <td class="gcm-header">Format:</td>
-                      <td>{{ .manualSpecFormat }}</td>
-                    </tr>
-                    <tr>
-                      <td class="gcm-header">Language:</td>
-                      <td>{{ .manualSpecLanguage }}</td>
-                    </tr>
-                    <tr>
-                      <td class="gcm-header">Suitable for:</td>
-                      <td>{{ .suitableFor }}</td>
-                    </tr>
-                  {{ end }}
-                </table>
-              </div>
+      <div class="pure-g">
+        <div class="pure-u-1-2">
+          <div class="row padding-top">
+                <h4 class="my-active" style="padding-left:31px;">Manual Specification</h4>
+                  <div class="col-sm-12" style="padding-left:49px;"> <br>
+                    <table class="borderless" width="70%">
+                      {{ range .Params.carspec }}
+                        <tr class="text-left">
+                          <td class="gcm-header">Manual Type:</td>
+                          <td>{{ .manualSpecType }}</td>
+                        </tr>
+                        <tr>
+                          <td class="gcm-header">No. of Pages:</td>
+                          <td>{{ .manualSpecNoOfPages }}</td>
+                        </tr>
+                        <tr>
+                          <td class="gcm-header">File Size:</td>
+                          <td>{{ .manualSpecFileSize }}</td>
+                        </tr>
+                        <tr>
+                          <td class="gcm-header">Format:</td>
+                          <td>{{ .manualSpecFormat }}</td>
+                        </tr>
+                        <tr>
+                          <td class="gcm-header">Language:</td>
+                          <td>{{ .manualSpecLanguage }}</td>
+                        </tr>
+                        <tr>
+                          <td class="gcm-header">Suitable for:</td>
+                          <td>{{ .suitableFor }}</td>
+                        </tr>
+                      {{ end }}
+                    </table>
+                  </div>
+          </div>
+        </div>
+        <div class="pure-u-1-2">
+          {{ partial "propsncons.html" . }}
+        </div>
       </div>
-      {{ partial "propsncons.html" . }}
       <div class=" padding-top">
         <h4 class="my-active" style="padding-left:30px;">Description</h4>
         <div style="padding-left:49px;"> <br>

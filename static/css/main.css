@@ -36,12 +36,12 @@ Add transition to containers so they can push in and out.
 .pist-submenu {
   margin-top:-16px;
   background-color:#e1e9ee;
-  margin-left:50px;
-  margin-right:80px;
+  margin-left:125px;
+  margin-right:155px;
 }
 .my_ex_body{
-  margin-left: 65px;
-  margin-right: 65px;
+  margin-left: 140px;
+  margin-right: 140px;
   background-color: white;
 }
 .pist-header{
@@ -72,8 +72,8 @@ Add transition to containers so they can push in and out.
 }
 .my_ex_body_product{
   padding: 20px;
-  margin-left: 65px;
-  margin-right: 65px;
+  margin-left: 140px;
+  margin-right: 140px;
   background-color: white;
 }
 
