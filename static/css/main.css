@@ -430,19 +430,19 @@ footer{
 /*Product Css*/
 .product-box {
   padding: 0;
-  border: 1px solid #e7eaec;
+  border: 0px solid #e7eaec;
 }
 .product-box:hover,
 .product-box.active {
-  border: 1px solid transparent;
-  -webkit-box-shadow: 0 3px 7px 0 #a8a8a8;
+  /*border: 1px solid transparent;*/
+  /*-webkit-box-shadow: 0 3px 7px 0 #a8a8a8;
   -moz-box-shadow: 0 3px 7px 0 #a8a8a8;
-  box-shadow: 0 3px 7px 0 #a8a8a8;
+  box-shadow: 0 3px 7px 0 #a8a8a8;*/
 }
 .product-imitation {
   text-align: center;
   /*padding: 90px 0;*/
-  background-color: #f8f8f9;
+  background-color: white;
   color: #bebec3;
   font-weight: 600;
 }
@@ -560,7 +560,7 @@ table.shoping-cart-table tr td:last-child {
   background-color: #ffffff;
   color: inherit;
   padding: 15px 20px 20px 20px;
-  border-color: #e7eaec;
+  border-color: white;
   border-image: none;
   border-style: solid solid none;
   border-width: 1px 0;
