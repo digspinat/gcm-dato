@@ -19,6 +19,15 @@ Add transition to containers so they can push in and out.
 */
 
 /*my CSS*/
+/*.snipcart-add-item{
+  background-color: #006633;
+	color: #FFFFFF;
+  height: 40px;
+  width: 130px;
+}*/
+.my-downloads ul {
+  padding-top: 20px;
+}
 .container-fluid {
     width: 100%;
     margin-right: auto;
@@ -71,7 +80,9 @@ Add transition to containers so they can push in and out.
   padding: 10px;
 }
 .my_ex_body_product{
-  padding: 20px;
+  padding-left: 80px;
+  padding-right: 30px;
+  padding-top: 10px;
   margin-left: 140px;
   margin-right: 140px;
   background-color: white;
@@ -165,6 +176,9 @@ Add transition to containers so they can push in and out.
   color:#E50000;
   float: left;
   margin-left: -1.5em;
+}
+.ul-fontawsme ul {
+  padding-top: 27px;
 }
 
 .my-table table {

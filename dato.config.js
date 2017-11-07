@@ -33,7 +33,17 @@ module.exports = (dato, root, i18n) => {
                 bodytype: article.manualBodyType,
                 fueltype: article.manualFuelType,
                 downloadspecs: article.downloadSpecs.toMap(),
-                relatedmanual: article.relatedManual.toMap()
+                relatedmanual: article.relatedManual.toMap(),
+                dataitemid: article.dataItemId,
+                dataitemname: article.dataItemName,
+                dataitemprice: article.dataItemPrice,
+                dataitemurl: article.dataItemUrl,
+                dataitemimage: article.dataItemImage,
+                dataitemshippable: article.dataItemShippable,
+                dataitemtaxable: article.dataItemTaxable,
+                dataItemfileguid: article.dataItemFileGuid,
+                dataitemcustomname: article.dataItemCustom1Name,
+                dataitemcustomoptions: article.dataItemCustom1Options
               },
               content: article.manualDescription
             }
