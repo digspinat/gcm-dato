@@ -11,7 +11,22 @@
         <div class="pure-u-1-2">
           <div class="" style="">
             <span class="gcm-header">Price: {{ .Params.manualprice }}</span>
-            <div class="padding-top"> {{ .Params.sendowlmd | safeHTML }} </div>
+            <!-- <div class="padding-top"> {{ .Params.sendowlmd | safeHTML }} </div> -->
+            <div class="padding-top">
+              <a    href="#"
+                    class="snipcart-add-item"
+                    data-item-id="{{ .Params.dataitemid }}"
+                    data-item-name="{{ .Params.dataitemname }}"
+                    data-item-price="{{ .Params.dataitemprice }}"
+                    data-item-url="{{ $.Site.BaseURL }}{{ .URL }}"
+                    data-item-description="{{ .Params.dataItemfileguid }}"
+                    data-item-custom1-name="{{ .Params.dataitemcustomname }}"
+                    data-item-custom1-options="{{ .Params.dataitemcustomoptions }}"
+                    data-item-image="{{ .Params.dataitemimage }}"
+                    >
+                      <img src="/img/add_to_cart.jpg" alt="">
+                </a>
+            </div>
             <div class="padding-top my-partial-addtocart"> {{ .Params.partialaddtocart | markdownify }} </div>
             <div class="panel padding-top">
               <div class="panel-heading">
@@ -62,8 +77,8 @@
       <div class="pure-g">
         <div class="pure-u-1-2">
           <div class="row padding-top">
-                <h4 class="my-active" style="padding-left:31px;">Manual Specification</h4>
-                  <div class="col-sm-12" style="padding-left:49px;"> <br>
+                <h4 class="my-active" style="padding-left:80px;">Manual Specification</h4>
+                  <div class="col-sm-12" style="padding-left:96px;"> <br>
                     <table class="borderless" width="70%">
                       {{ range .Params.carspec }}
                         <tr class="text-left">
@@ -100,17 +115,28 @@
         </div>
       </div>
       <div class=" padding-top">
-        <h4 class="my-active" style="padding-left:30px;">Description</h4>
-        <div style="padding-left:49px;"> <br>
+        <h4 class="my-active" style="padding-left:80px;">Description</h4>
+        <div style="padding-left:100px;"> <br>
             {{ .Content | markdownify }}
         </div>
       </div>
-      <div class="my-table" style="padding:40px;"> <br>
+      <div class="my-table" style="padding-left:100px;padding-right:30px;"> <br>
           {{ .Params.manualcover | markdownify }}
       </div>
       {{ partial "tableofcontent.html" . }}
       <div class="padding-top text-center">
-        {{ .Params.sendowlmd | safeHTML }}
+        <a    href="#"
+              class="snipcart-add-item"
+              data-item-id="{{ .Params.dataitemid }}"
+              data-item-name="{{ .Params.dataitemname }}"
+              data-item-price="{{ .Params.dataitemprice }}"
+              data-item-url="{{ .Params.dataitemurl }}"
+              data-item-description="{{ .Params.dataItemfileguid }}"
+              data-item-custom1-name="{{ .Params.dataitemcustomname }}"
+              data-item-custom1-options="{{ .Params.dataitemcustomoptions }}"
+              >
+                <img src="/img/add_to_cart.jpg" alt="">
+          </a>
       </div>
       {{ partial "related_manual.html" . }}
     </div>

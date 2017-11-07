@@ -1,4 +1,4 @@
-<div class="pure-u-1-3">
+<div class="pure-u-1-4">
   <div class="ibox">
     <div class="ibox-content product-box">
       <div class="product-imitation">
@@ -14,7 +14,8 @@
           <li>Platform: {{ .Params.platform }}</li>
           <li>Year: {{ .Params.manualyear }}</li>
         </ul>
-        <div class="pure-g">
+        <a href="{{ $.Site.BaseURL }}{{ .URL }}" role="button" class="pist-borderbutton">More Info</a>
+        <!-- <div class="pure-g">
           <div class="pure-u-1-3"><a href="{{ .URL }}" role="button" class="pist-borderbutton">More Info</a></div>
           <div class="pure-u-1-3">
             <div class="owl-image" style="display:inline;">
@@ -24,7 +25,7 @@
           <div class="pure-u-1-3">
 
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
