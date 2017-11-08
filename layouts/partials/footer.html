@@ -10,19 +10,19 @@
             {{ range .Site.Pages.ByWeight }}
               {{ if eq .Params.mytype "pages" }}
                 {{ if eq .Title "Returns and Refunds Policy " }}
-                  <li class="pure-menu-item"><a href="#" class="pure-menu-link">{{ .Title }}</a></li>
+                  <li class="pure-menu-item"><a href="{{ .Permalink }}" class="pure-menu-link">{{ .Title }}</a></li>
                 {{ end }}
                 {{ if eq .Title "Delivery" }}
-                  <li class="pure-menu-item"><a href="#" class="pure-menu-link">{{ .Title }}</a></li>
+                  <li class="pure-menu-item"><a href="{{ .Permalink }}" class="pure-menu-link">{{ .Title }}</a></li>
                 {{ end }}
                 {{ if eq .Title "Privacy policy" }}
-                  <li class="pure-menu-item"><a href="#" class="pure-menu-link">{{ .Title }}</a></li>
+                  <li class="pure-menu-item"><a href="{{ .Permalink }}" class="pure-menu-link">{{ .Title }}</a></li>
                 {{ end }}
                 {{ if eq .Title "Terms of service" }}
-                  <li class="pure-menu-item"><a href="#" class="pure-menu-link">{{ .Title }}</a></li>
+                  <li class="pure-menu-item"><a href="{{ .Permalink }}" class="pure-menu-link">{{ .Title }}</a></li>
                 {{ end }}
                 {{ if eq .Title "Contact" }}
-                  <li class="pure-menu-item"><a href="#" class="pure-menu-link">{{ .Title }}</a></li>
+                  <li class="pure-menu-item"><a href="{{ .Permalink }}" class="pure-menu-link">{{ .Title }}</a></li>
                 {{ end }}
               {{ end }}
             {{ end }}

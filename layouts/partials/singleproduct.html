@@ -13,7 +13,7 @@
             <span class="my-active" style="font-weight:bold;font-size:16px;">Price: {{ .Params.dataitemprice }}</span>
             <!-- <div class="padding-top"> {{ .Params.sendowlmd | safeHTML }} </div> -->
             <div class="padding-top">
-              <a    href="#"
+              <button
                     class="snipcart-add-item"
                     data-item-id="{{ .Params.dataitemid }}"
                     data-item-name="{{ .Params.dataitemname }}"
@@ -27,8 +27,8 @@
                     data-item-shippable="{{ .Params.dataitemshippable }}"
                     data-item-taxable="{{ .Params.dataitemtaxable }}"
                     >
-                      <img src="/img/add_to_cart.jpg" alt="">
-                </a>
+                    &nbsp;
+                </button>
             </div>
             <div class="padding-top my-partial-addtocart"> {{ .Params.partialaddtocart | markdownify }} </div>
             <div class="panel padding-top">
@@ -128,7 +128,7 @@
       </div>
       {{ partial "tableofcontent.html" . }}
       <div class="padding-top text-center">
-        <a    href="#"
+        <button
               class="snipcart-add-item"
               data-item-id="{{ .Params.dataitemid }}"
               data-item-name="{{ .Params.dataitemname }}"
@@ -137,9 +137,13 @@
               data-item-description="{{ .Params.dataItemfileguid }}"
               data-item-custom1-name="{{ .Params.dataitemcustomname }}"
               data-item-custom1-options="{{ .Params.dataitemcustomoptions }}"
+              data-item-image="{{ .Params.dataitemimage }}"
+              data-item-file-guid="{{ .Params.dataitemfileguid }}"
+              data-item-shippable="{{ .Params.dataitemshippable }}"
+              data-item-taxable="{{ .Params.dataitemtaxable }}"
               >
-                <img src="/img/add_to_cart.jpg" alt="">
-          </a>
+              &nbsp;
+          </button>
       </div>
       {{ partial "related_manual.html" . }}
     </div>
