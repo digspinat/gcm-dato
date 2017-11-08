@@ -46,7 +46,11 @@
           <ul class="pure-menu-list gcm-nav">
             {{ range .Site.Pages.ByWeight }}
               {{ if eq .Params.myid "menutop" }}
-                <li class="pure-menu-item"><a href="{{ .Permalink }}" class="pure-menu-link">{{ .Title }}</a></li>
+                {{ if eq .Title "Home" }}
+                  <li class="pure-menu-item"><a href="{{ $.Site.BaseURL }}" class="pure-menu-link">{{ .Title }}</a></li>
+                {{ else }}
+                  <li class="pure-menu-item"><a href="{{ .Permalink }}" class="pure-menu-link">{{ .Title }}</a></li>
+                {{ end }}
               {{ end }}
             {{ end }}
             <li class="pure-menu-item"><a href="#" class="snipcart-checkout pure-menu-link"><span class="snipcart-summary">(<span class="snipcart-total-items"></span>)</span>Checkout</a></li>
