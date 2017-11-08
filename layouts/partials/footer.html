@@ -1,13 +1,70 @@
 <!-- </div>
 </div> -->
 <div class="my-footer">
-  <div class="footer-content">
+  <div class="my_ex_body" style="background-color:#181c1e;">
+    <div class="pure-g">
+      <div class="pure-u-1-4">
+        <h2 class="my-active" style="background-color:#181c1e;font-size:16px;text-align:left;">Customer service</h2>
+        <div class="pure-menu custom-restricted-width">
+          <ul class="pure-menu-list gcm-nav">
+            {{ range .Site.Pages.ByWeight }}
+              {{ if eq .Params.mytype "pages" }}
+                {{ if eq .Title "Returns and Refunds Policy " }}
+                  <li class="pure-menu-item"><a href="#" class="pure-menu-link">{{ .Title }}</a></li>
+                {{ end }}
+                {{ if eq .Title "Delivery" }}
+                  <li class="pure-menu-item"><a href="#" class="pure-menu-link">{{ .Title }}</a></li>
+                {{ end }}
+                {{ if eq .Title "Privacy policy" }}
+                  <li class="pure-menu-item"><a href="#" class="pure-menu-link">{{ .Title }}</a></li>
+                {{ end }}
+                {{ if eq .Title "Terms of service" }}
+                  <li class="pure-menu-item"><a href="#" class="pure-menu-link">{{ .Title }}</a></li>
+                {{ end }}
+                {{ if eq .Title "Contact" }}
+                  <li class="pure-menu-item"><a href="#" class="pure-menu-link">{{ .Title }}</a></li>
+                {{ end }}
+              {{ end }}
+            {{ end }}
+          </ul>
+        </div>
+      </div>
+      <div class="pure-u-1-4">
+        <h2 class="my-active" style="background-color:#181c1e;font-size:16px;text-align:left;">Car makes</h2>
+        <div class="pure-menu custom-restricted-width">
+          <ul class="pure-menu-list gcm-nav">
+              <li class="pure-menu-item"><a href="/manual/audi/" class="pure-menu-link">Audi</a></li>
+              <li class="pure-menu-item"><a href="/manual/bmw/" class="pure-menu-link">BMW</a></li>
+              <li class="pure-menu-item"><a href="/manual/mercedes/" class="pure-menu-link">Mercedes</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="pure-u-1-4"></div>
+      <div class="pure-u-1-4">
+        <h2 class="my-active" style="background-color:#181c1e;font-size:16px;text-align:left;">Quick links</h2>
+        <div class="pure-menu custom-restricted-width">
+          <ul class="pure-menu-list gcm-nav">
+            {{ range .Site.Pages.ByWeight }}
+              {{ if eq .Params.myid "menutop" }}
+                <li class="pure-menu-item"><a href="{{ .Permalink }}" class="pure-menu-link">{{ .Title }}</a></li>
+              {{ end }}
+            {{ end }}
+            <li class="pure-menu-item"><a href="#" class="snipcart-checkout pure-menu-link"><span class="snipcart-summary">(<span class="snipcart-total-items"></span>)</span>Checkout</a></li>
+              <!-- <li class="pure-menu-item"><a href="/manual/audi/" class="pure-menu-link">Audi</a></li>
+              <li class="pure-menu-item"><a href="/manual/bmw/" class="pure-menu-link">BMW</a></li>
+              <li class="pure-menu-item"><a href="/manual/mercedes/" class="pure-menu-link">Mercedes</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="footer-content">
     {{ range .Site.Pages }}
       {{ if eq .Type "footer" }}
         {{ .Content | markdownify }}
       {{ end }}
     {{ end }}
-  </div>
+  </div> -->
 </div>
 
 {{ partial "google_analytics.html" . }}

@@ -10,7 +10,7 @@
         </div>
         <div class="pure-u-1-2">
           <div class="" style="">
-            <span class="gcm-header">Price: {{ .Params.manualprice }}</span>
+            <span class="my-active" style="font-weight:bold;font-size:16px;">Price: {{ .Params.dataitemprice }}</span>
             <!-- <div class="padding-top"> {{ .Params.sendowlmd | safeHTML }} </div> -->
             <div class="padding-top">
               <a    href="#"
@@ -23,6 +23,7 @@
                     data-item-custom1-name="{{ .Params.dataitemcustomname }}"
                     data-item-custom1-options="{{ .Params.dataitemcustomoptions }}"
                     data-item-image="{{ .Params.dataitemimage }}"
+                    data-item-file-guid="{{ .Params.dataitemfileguid }}"
                     data-item-shippable="{{ .Params.dataitemshippable }}"
                     data-item-taxable="{{ .Params.dataitemtaxable }}"
                     >

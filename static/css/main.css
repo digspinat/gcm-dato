@@ -19,12 +19,28 @@ Add transition to containers so they can push in and out.
 */
 
 /*my CSS*/
-/*.snipcart-add-item{
-  background-color: #006633;
-	color: #FFFFFF;
-  height: 40px;
-  width: 130px;
-}*/
+.gcm-nav {
+  text-align: left;
+}
+.button-success {
+    background: rgb(66, 184, 221);
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.gcm-nav li a {
+  font-size: 12px;
+  color: white;
+}
+.gcm-nav li a:hover {
+  color: #0085DA;
+  background-color: #181c1e;
+}
+.gcm-nav li a:visited {
+  color: white;
+  background-color: #181c1e;
+}
+
 .my-downloads ul {
   padding-top: 20px;
 }
@@ -64,7 +80,7 @@ Add transition to containers so they can push in and out.
 .my-footer{
   background-color: #181c1e;
   bottom:0;
-  height:100px;
+  /*height:100px;*/
   margin: auto;
   text-align: center;
 }

@@ -41,7 +41,7 @@ module.exports = (dato, root, i18n) => {
                 dataitemimage: article.dataItemImage,
                 dataitemshippable: article.dataItemShippable,
                 dataitemtaxable: article.dataItemTaxable,
-                dataItemfileguid: article.dataItemFileGuid,
+                dataitemfileguid: article.dataItemFileGuid,
                 dataitemcustomname: article.dataItemCustom1Name,
                 dataitemcustomoptions: article.dataItemCustom1Options
               },
@@ -60,7 +60,8 @@ module.exports = (dato, root, i18n) => {
                 weight: i,
                 type: "topmenu",
                 id: article.slugurl,
-                description: article.pageDescription
+                description: article.pageDescription,
+                mytype: "pages"
               },
               content: article.pageDescription
             }
