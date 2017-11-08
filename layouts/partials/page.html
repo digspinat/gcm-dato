@@ -8,7 +8,7 @@
     <div class="" style="padding:10px;margin-right:300px;">
       {{ if eq .Title "Contact" }}
         <h2 class="my-active">Contact Form</h2>
-        <form method="POST" class="pure-form pure-form-stacked" name="contact" action="{{ $.Site.BaseURL }}" netlify-honeypot="bot-field" netlify>
+        <form method="POST" class="pure-form pure-form-stacked" name="contact" action="/home/" netlify-honeypot="bot-field" netlify>
           <p style="display:none;">
              <label>Don’t fill this out: <input name="bot-field"></label>
            </p>
