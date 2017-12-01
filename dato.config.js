@@ -1,8 +1,15 @@
 module.exports = (dato, root, i18n) => {
-  // console.log(dato.manuals)
+  // console.log(dato.manuals['entity'])
+  var myall = []        // => "it"
+  dato.manuals.forEach((Manuals, i) => {
+      var content = Manuals.entity.payload.attributes;
+      myall.push(content)
+  });
+  // console.log(myall);
+  root.createDataFile(`data/data.json`, 'json', myall)
   root.directory("content/manuals", (articlesDir) => {
         dato.manuals.forEach((article) => {
-          // console.log(article.relatedManual);
+          // console.log(article.imageCoverCatalog);
           articlesDir.createPost(
             `${article.url}.md`, "yaml", {
               frontmatter: {
@@ -43,7 +50,8 @@ module.exports = (dato, root, i18n) => {
                 dataitemtaxable: article.dataItemTaxable,
                 dataitemfileguid: article.dataItemFileGuid,
                 dataitemcustomname: article.dataItemCustom1Name,
-                dataitemcustomoptions: article.dataItemCustom1Options
+                dataitemcustomoptions: article.dataItemCustom1Options,
+                imagecovercatalog: article.imageCoverCatalog
               },
               content: article.manualDescription
             }
